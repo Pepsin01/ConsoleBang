@@ -13,10 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\GameModul">
+      <UniqueIdentifier>{bee463af-6cdb-43f0-90d7-c39c6a4d57fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UIModul">
+      <UniqueIdentifier>{c56762f2-18bd-42bd-bc04-6a8169d393f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameModule">
+      <UniqueIdentifier>{a4bdde4d-550f-46e5-9839-d0c61f871a30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleBang!.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameModule.ixx">
+      <Filter>Header Files\GameModule</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
