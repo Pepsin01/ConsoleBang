@@ -130,6 +130,13 @@
   <ItemGroup>
     <ClCompile Include="ConsoleBang!.cpp" />
     <ClCompile Include="GameModule.ixx" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.hpp" />
+    <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Player.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,5 +30,22 @@
     <ClCompile Include="GameModule.ixx">
       <Filter>Header Files\GameModule</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\GameModul</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\GameModul</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Player.hpp">
+      <Filter>Header Files\GameModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.hpp">
+      <Filter>Header Files\GameModule</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
