@@ -1,5 +1,5 @@
 #include "Player.hpp"
 
-void Player::playCard(GameState& gameState, int cardIndex, Player& targetPlayer)
+void Player::playCard(GameStateControllor& gameState, int cardIndex)
 {
 }

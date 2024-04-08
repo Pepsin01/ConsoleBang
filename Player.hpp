@@ -2,15 +2,15 @@
 export module Player;
 
 #include <vector>
-#include "Card.hpp"
+#include "ICard.hpp"
 
-class GameState;  // Forward declaration
+class GameStateControllor;  // Forward declaration
 
 class Player {
 private:
-    std::vector<Card*> hand;
+    std::vector<ICard*> hand;
 public:
     // method to play a card
-    void playCard(GameState& gameState, int cardIndex, Player& targetPlayer);
+    void playCard(GameStateControllor& gameState, int cardIndex);
 };
 

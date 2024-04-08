@@ -3,18 +3,40 @@ export module GameState;
 
 #include <vector>
 #include "Player.hpp"
+#include "GameUIOutput.hpp"
 
-class GameState {
+enum GameState
+{
+    START,
+    PLAYER_TURN,
+    CARD_EXECUTION,
+	END
+};
+
+class GameStateControllor {
 private:
     std::vector<Player> players;
-    // other game state attributes and methods
-public:
-    static GameState& getInstance();  // Singleton pattern method
+    int currentPlayerIndex;
 
-    // methods to manage the game state
+    GameState currentState;
+
+    GameUIOutput& uiOut;
+    
+    GameStateControllor(GameUIOutput& uiOut, int playerCount);
+public:
+    static GameStateControllor& getInstance(GameUIOutput& uiOut, int playerCount);  // Singleton pattern method
+    
+    GameState getCurrentState() const;
+    
+    Player& getPlayer(int index);
+    
+    int playerCount();
+    
+    int getCurrentPlayerIndex() const;
+
     void startGame();
+
     void endGame();
-    // other necessary methods
 };
 
 

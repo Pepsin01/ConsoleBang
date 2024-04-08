@@ -22,6 +22,9 @@
     <Filter Include="Header Files\GameModule">
       <UniqueIdentifier>{a4bdde4d-550f-46e5-9839-d0c61f871a30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameModul\Cards">
+      <UniqueIdentifier>{5f0ea856-a721-4a7f-abad-b5cc92fe2983}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleBang!.cpp">
@@ -41,11 +44,14 @@
     <ClInclude Include="Player.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
-    <ClInclude Include="Card.hpp">
+    <ClInclude Include="ICard.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
     <ClInclude Include="GameState.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameModule</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUIOutput.hpp">
+      <Filter>Header Files\GameModule</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
