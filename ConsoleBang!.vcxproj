@@ -128,12 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BangCard.cpp" />
     <ClCompile Include="ConsoleBang!.cpp" />
     <ClCompile Include="GameModule.ixx" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BangCard.hpp" />
     <ClInclude Include="ICard.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameUIOutput.hpp" />

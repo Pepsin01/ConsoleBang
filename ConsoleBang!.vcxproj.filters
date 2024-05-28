@@ -25,6 +25,9 @@
     <Filter Include="Source Files\GameModul\Cards">
       <UniqueIdentifier>{5f0ea856-a721-4a7f-abad-b5cc92fe2983}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameModule\Cards">
+      <UniqueIdentifier>{ac10c5f3-4002-4b9f-901f-46c23dd5ce5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleBang!.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\GameModul</Filter>
     </ClCompile>
+    <ClCompile Include="BangCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -52,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="GameUIOutput.hpp">
       <Filter>Header Files\GameModule</Filter>
+    </ClInclude>
+    <ClInclude Include="BangCard.hpp">
+      <Filter>Header Files\GameModule\Cards</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
