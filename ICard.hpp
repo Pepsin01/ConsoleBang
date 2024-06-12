@@ -1,7 +1,7 @@
 #pragma once
-export module Card;
 
 class GameStateControllor;  // Forward declaration
+class Player;  // Forward declaration
 
 class ICard {
 public:

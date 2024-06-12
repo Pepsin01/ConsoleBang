@@ -2,10 +2,17 @@
 //
 
 #include <iostream>
+#include "GameUIOutput.hpp"
+#include "GameUIInput.hpp"
+#include "GameState.hpp"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	GameUIOutput gameUI;
+	GameUIInput gameInput;
+	GameStateControllor& gameState = GameStateControllor::getInstance(gameUI, gameInput, gameInput.getPlayerCount());
+
+	gameState.startGame();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

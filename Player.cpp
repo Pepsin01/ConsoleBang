@@ -3,3 +3,7 @@
 void Player::playCard(GameStateControllor& gameState, int cardIndex)
 {
 }
+
+Player::Player(PlayerRole role) : role(role)
+{
+}

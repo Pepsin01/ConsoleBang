@@ -130,16 +130,20 @@
   <ItemGroup>
     <ClCompile Include="BangCard.cpp" />
     <ClCompile Include="ConsoleBang!.cpp" />
-    <ClCompile Include="GameModule.ixx" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameUIInput.cpp" />
+    <ClCompile Include="GameUIOutput.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerRole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BangCard.hpp" />
+    <ClInclude Include="GameUIInput.hpp" />
     <ClInclude Include="ICard.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameUIOutput.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="PlayerRole.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

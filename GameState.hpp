@@ -1,9 +1,11 @@
 #pragma once
-export module GameState;
 
 #include <vector>
+#include <memory>
 #include "Player.hpp"
 #include "GameUIOutput.hpp"
+#include "GameUIinput.hpp"
+#include "PlayerRole.hpp"
 
 enum GameState
 {
@@ -15,22 +17,23 @@ enum GameState
 
 class GameStateControllor {
 private:
-    std::vector<Player> players;
+    std::vector<std::shared_ptr<Player>> players;
     int currentPlayerIndex;
 
     GameState currentState;
 
     GameUIOutput& uiOut;
+    GameUIInput& uiIn;
     
-    GameStateControllor(GameUIOutput& uiOut, int playerCount);
+    GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount);
 public:
-    static GameStateControllor& getInstance(GameUIOutput& uiOut, int playerCount);  // Singleton pattern method
+    static GameStateControllor& getInstance(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount);  // Singleton pattern method
     
     GameState getCurrentState() const;
     
-    Player& getPlayer(int index);
+    std::shared_ptr<Player> getPlayer(int index);
     
-    int playerCount();
+    size_t playerCount();
     
     int getCurrentPlayerIndex() const;
 

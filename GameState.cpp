@@ -1,8 +1,9 @@
 #include "GameState.hpp"
+using namespace std;
 
-GameStateControllor& GameStateControllor::getInstance(GameUIOutput& uiOut, int playerCount)
+GameStateControllor& GameStateControllor::getInstance(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount)
 {
-	static GameStateControllor instance(uiOut, playerCount);
+	static GameStateControllor instance(uiOut, uiIn, playerCount);
 	return instance;
 }
 
@@ -11,12 +12,12 @@ GameState GameStateControllor::getCurrentState() const
 	return this->currentState;
 }
 
-Player& GameStateControllor::getPlayer(int index)
+shared_ptr<Player> GameStateControllor::getPlayer(int index)
 {
 	return this->players[index];
 }
 
-int GameStateControllor::playerCount()
+size_t GameStateControllor::playerCount()
 {
 	return this->players.size();
 }
@@ -26,18 +27,27 @@ int GameStateControllor::getCurrentPlayerIndex() const
 	return this->currentPlayerIndex;
 }
 
-GameStateControllor::GameStateControllor(GameUIOutput& uiOut, int playerCount) : uiOut(uiOut), players(playerCount)
+GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount) : uiOut(uiOut), uiIn(uiIn), players(playerCount)
 {
-	players = std::vector<Player>(playerCount);
+	players = vector<shared_ptr<Player>>(playerCount);
+
+	PlayerRoleRandomizer prr = PlayerRoleRandomizer(playerCount);
 
 	for (size_t i = 0; i < playerCount; i++)
 	{
-		players[i] = Player();
+		players[i] = make_shared<Player>(prr.getNextRole());
 	}
 }
 
 void GameStateControllor::startGame()
 {
+	this->currentState = GameState::START;
+	this->currentPlayerIndex = 0;
+	this->uiOut.startGameScreen();
+	if (this->uiIn.startGameScreen())
+	{
+		this->uiOut.gameRulesScreen();
+	}
 }
 
 void GameStateControllor::endGame()

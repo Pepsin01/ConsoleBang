@@ -1,12 +1,16 @@
 #pragma once
-
-export module GameUIOutput;
+#include <string>
 
 class GameUIOutput
 {
 public:
-	virtual void startGameScreen() = 0;
-
+	void startGameScreen();
+	void gameRulesScreen();
+	GameUIOutput();
 private:
+	std::string wrapWithXs(const std::string& text);
 
+	const std::string beforeStartScreen;
+	const std::string rulesStartScreen;
+	const std::string xLine;
 };
