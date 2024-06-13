@@ -3,9 +3,9 @@
 
 using namespace std;
 
-bool GameUIInput::startGameScreen()
+bool GameUIInput::waitForEnter()
 {
-	cin.ignore();
+    cin.get();
 	return true;
 }
 
@@ -21,6 +21,7 @@ int GameUIInput::getPlayerCount()
             cout << "Not a valid number of players, insert number between 3-7 please" << endl;
         }
         else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return number;
         }
     }

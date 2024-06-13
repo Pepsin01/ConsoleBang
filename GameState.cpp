@@ -27,7 +27,7 @@ int GameStateControllor::getCurrentPlayerIndex() const
 	return this->currentPlayerIndex;
 }
 
-GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount) : uiOut(uiOut), uiIn(uiIn), players(playerCount)
+GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount) : uiOut(uiOut), uiIn(uiIn)
 {
 	players = vector<shared_ptr<Player>>(playerCount);
 
@@ -37,16 +37,18 @@ GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn,
 	{
 		players[i] = make_shared<Player>(prr.getNextRole());
 	}
+	currentState = GameState::START;
+	currentPlayerIndex = 0;
 }
 
 void GameStateControllor::startGame()
 {
-	this->currentState = GameState::START;
-	this->currentPlayerIndex = 0;
 	this->uiOut.startGameScreen();
-	if (this->uiIn.startGameScreen())
-	{
+	if (this->uiIn.waitForEnter())
 		this->uiOut.gameRulesScreen();
+	if (this->uiIn.waitForEnter())
+		{
+		this->currentState = GameState::PLAYER_TURN;
 	}
 }
 

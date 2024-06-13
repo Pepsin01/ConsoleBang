@@ -3,7 +3,7 @@
 class GameUIInput
 {
 	public:
-	bool startGameScreen();
+	bool waitForEnter();
 	int getPlayerCount();
 };
 
