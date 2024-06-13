@@ -128,22 +128,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BangCard.cpp" />
+    <ClCompile Include="Cards\BangCard.cpp" />
     <ClCompile Include="ConsoleBang!.cpp" />
-    <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="GameUIInput.cpp" />
-    <ClCompile Include="GameUIOutput.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerRole.cpp" />
+    <ClCompile Include="CoreModul\GameState.cpp" />
+    <ClCompile Include="GameUI\GameUIInput.cpp" />
+    <ClCompile Include="GameUI\GameUIOutput.cpp" />
+    <ClCompile Include="CoreModul\Player.cpp" />
+    <ClCompile Include="CoreModul\PlayerRole.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BangCard.hpp" />
-    <ClInclude Include="GameUIInput.hpp" />
-    <ClInclude Include="Card.hpp" />
-    <ClInclude Include="GameState.hpp" />
-    <ClInclude Include="GameUIOutput.hpp" />
-    <ClInclude Include="Player.hpp" />
-    <ClInclude Include="PlayerRole.hpp" />
+    <ClInclude Include="Cards\BangCard.hpp" />
+    <ClInclude Include="GameUI\GameUIInput.hpp" />
+    <ClInclude Include="CoreModul\Card.hpp" />
+    <ClInclude Include="CoreModul\GameState.hpp" />
+    <ClInclude Include="GameUI\GameUIOutput.hpp" />
+    <ClInclude Include="CoreModul\Player.hpp" />
+    <ClInclude Include="CoreModul\PlayerRole.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

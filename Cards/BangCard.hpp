@@ -1,6 +1,6 @@
 #pragma once
-#include "Card.hpp"
-#include "Player.hpp"
+#include "../CoreModul/Card.hpp"
+#include "../CoreModul/Player.hpp"
 
 class BangCard : public Card
 {

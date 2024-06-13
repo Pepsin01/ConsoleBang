@@ -4,8 +4,8 @@
 #include <memory>
 #include <deque>
 #include "Player.hpp"
-#include "GameUIOutput.hpp"
-#include "GameUIinput.hpp"
+#include "../GameUI/GameUIOutput.hpp"
+#include "../GameUI/GameUIInput.hpp"
 #include "PlayerRole.hpp"
 
 enum GameState

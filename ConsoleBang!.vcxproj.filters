@@ -36,45 +36,45 @@
     <ClCompile Include="ConsoleBang!.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="CoreModul\Player.cpp">
       <Filter>Source Files\GameModul</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
+    <ClCompile Include="CoreModul\GameState.cpp">
       <Filter>Source Files\GameModul</Filter>
     </ClCompile>
-    <ClCompile Include="GameUIOutput.cpp">
+    <ClCompile Include="GameUI\GameUIOutput.cpp">
       <Filter>Source Files\UIModul</Filter>
     </ClCompile>
-    <ClCompile Include="GameUIInput.cpp">
+    <ClCompile Include="GameUI\GameUIInput.cpp">
       <Filter>Source Files\UIModul</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerRole.cpp">
+    <ClCompile Include="CoreModul\PlayerRole.cpp">
       <Filter>Source Files\GameModul</Filter>
     </ClCompile>
-    <ClCompile Include="BangCard.cpp">
+    <ClCompile Include="Cards\BangCard.cpp">
       <Filter>Source Files\GameModul\Cards</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.hpp">
+    <ClInclude Include="CoreModul\Player.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
-    <ClInclude Include="Card.hpp">
+    <ClInclude Include="CoreModul\Card.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.hpp">
+    <ClInclude Include="CoreModul\GameState.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
-    <ClInclude Include="BangCard.hpp">
+    <ClInclude Include="Cards\BangCard.hpp">
       <Filter>Header Files\GameModule\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="GameUIOutput.hpp">
+    <ClInclude Include="GameUI\GameUIOutput.hpp">
       <Filter>Header Files\UIModul</Filter>
     </ClInclude>
-    <ClInclude Include="GameUIInput.hpp">
+    <ClInclude Include="GameUI\GameUIInput.hpp">
       <Filter>Header Files\UIModul</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerRole.hpp">
+    <ClInclude Include="CoreModul\PlayerRole.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
   </ItemGroup>

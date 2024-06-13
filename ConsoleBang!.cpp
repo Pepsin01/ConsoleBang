@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include "GameUIOutput.hpp"
-#include "GameUIInput.hpp"
-#include "GameState.hpp"
+#include "GameUI/GameUIOutput.hpp"
+#include "GameUI/GameUIInput.hpp"
+#include "CoreModul/GameState.hpp"
 
 int main()
 {
