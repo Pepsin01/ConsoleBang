@@ -52,14 +52,14 @@
       <Filter>Source Files\GameModul</Filter>
     </ClCompile>
     <ClCompile Include="BangCard.cpp">
-      <Filter>Source Files\GameModul</Filter>
+      <Filter>Source Files\GameModul\Cards</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
-    <ClInclude Include="ICard.hpp">
+    <ClInclude Include="Card.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
     <ClInclude Include="GameState.hpp">

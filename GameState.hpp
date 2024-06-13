@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <deque>
 #include "Player.hpp"
 #include "GameUIOutput.hpp"
 #include "GameUIinput.hpp"
@@ -19,6 +20,8 @@ class GameStateControllor {
 private:
     std::vector<std::shared_ptr<Player>> players;
     int currentPlayerIndex;
+
+    std::deque<std::unique_ptr<Card>> deck;
 
     GameState currentState;
 

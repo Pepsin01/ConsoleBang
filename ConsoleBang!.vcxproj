@@ -139,7 +139,7 @@
   <ItemGroup>
     <ClInclude Include="BangCard.hpp" />
     <ClInclude Include="GameUIInput.hpp" />
-    <ClInclude Include="ICard.hpp" />
+    <ClInclude Include="Card.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="GameUIOutput.hpp" />
     <ClInclude Include="Player.hpp" />

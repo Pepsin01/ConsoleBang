@@ -1,8 +1,8 @@
 #pragma once
-#include "ICard.hpp"
+#include "Card.hpp"
 #include "Player.hpp"
 
-class BangCard : public ICard
+class BangCard : public Card
 {
 	// Inherited via ICard
 	void execute(GameStateControllor& gameState, Player& currentPlayer) override;
