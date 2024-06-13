@@ -15,7 +15,7 @@ PlayerRoleRandomizer::PlayerRoleRandomizer(int totalPlayers) : totalPlayers(tota
 	for (int i = 0; i < totalPlayers - size; i++)
 		roles.push_back(BANDIT);
 
-	auto rng = std::default_random_engine{};
+	auto rng = std::default_random_engine{ static_cast<unsigned int>(std::time(nullptr)) };
 	std::shuffle(std::begin(roles), std::end(roles), rng);
 }
 

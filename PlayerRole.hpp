@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <ctime>
 
 enum PlayerRole
 {
@@ -13,11 +14,11 @@ enum PlayerRole
 
 class PlayerRoleRandomizer
 {
-	private:
-		std::vector<PlayerRole> roles;
-        int totalPlayers;
-	public:
-		PlayerRoleRandomizer(int totalPlayers);
-		PlayerRole getNextRole();
+private:
+	std::vector<PlayerRole> roles;
+    int totalPlayers;
+public:
+	PlayerRoleRandomizer(int totalPlayers);
+	PlayerRole getNextRole();
 };
 
