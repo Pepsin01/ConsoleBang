@@ -36,7 +36,7 @@ The Card class encapsulates the characteristics and behaviors of cards within th
 | 2      | Diligenza (Stagecoach) | Brown |
 | 1      | Dinamite (Dynamite) | Blue |
 | 1      | Appaloosa | Blue |
-| 2      | Cavallo (Horse) | Blue |
+| 2      | Mustang | Blue |
 | 1      | Saloon | Brown |
 | 2      | Volcanic | Weapon |
 | 3      | Schofield | Weapon |
@@ -47,7 +47,7 @@ The Card class encapsulates the characteristics and behaviors of cards within th
 | 1      | Gatling |  Brown |
 | 2      | Barile (Barrel) | Blue |
 | 2      | Indiani! (Injuns!) |  Brown |
-| 4      | Maestrina (Mistress) |  Brown |
+| 4      | CatBalou |  Brown |
 | 4      | Panico! (Panic!) |  Brown |
 | 6      | Birra (Beer) |  Brown |
 | 2      | Emporio (General Store) |  Brown |

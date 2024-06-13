@@ -31,6 +31,24 @@
     <Filter Include="Header Files\UIModul">
       <UniqueIdentifier>{ce09b570-eb8d-4eff-a857-84461da5a2fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameModule\Cards\Playable">
+      <UniqueIdentifier>{403db5b7-125a-45c5-8cf8-d7794fc4cb5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameModul\Cards\Playable">
+      <UniqueIdentifier>{3faf7c58-f827-4bc2-b0e5-8e226712dfde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameModule\Cards\Blue">
+      <UniqueIdentifier>{21c0076e-b0d8-4f3c-91b5-21be6c95535d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameModul\Cards\Blue">
+      <UniqueIdentifier>{b8c3fb0a-c8ee-479d-87ea-aefa46f4f24d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameModule\Cards\Reaction">
+      <UniqueIdentifier>{1ff0d636-a0f3-48bb-868d-7b002362047f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameModul\Cards\Reaction">
+      <UniqueIdentifier>{2573ea2b-70cd-47ff-962c-310219803f3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleBang!.cpp">
@@ -52,7 +70,67 @@
       <Filter>Source Files\GameModul</Filter>
     </ClCompile>
     <ClCompile Include="Cards\BangCard.cpp">
-      <Filter>Source Files\GameModul\Cards</Filter>
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\DiligenzaCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\DuelloCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\MancatoCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Reaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\WellsFargoCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\AppaloosaCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\MustangCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\SaloonCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\VolcanicCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\SchofieldCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\RemingtonCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\WinchesterCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\CarabineCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\PrigioneCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\GatlingCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\BarileCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Blue</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\IndianiCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\CatBelouCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\PanicoCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\BirraCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\EmporioCard.cpp">
+      <Filter>Source Files\GameModul\Cards\Playable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +143,6 @@
     <ClInclude Include="CoreModul\GameState.hpp">
       <Filter>Header Files\GameModule</Filter>
     </ClInclude>
-    <ClInclude Include="Cards\BangCard.hpp">
-      <Filter>Header Files\GameModule\Cards</Filter>
-    </ClInclude>
     <ClInclude Include="GameUI\GameUIOutput.hpp">
       <Filter>Header Files\UIModul</Filter>
     </ClInclude>
@@ -76,6 +151,69 @@
     </ClInclude>
     <ClInclude Include="CoreModul\PlayerRole.hpp">
       <Filter>Header Files\GameModule</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\BangCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\DiligenzaCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\DuelloCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\MancatoCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Reaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\WellsFargoCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\AppaloosaCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\MustangCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\SaloonCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\VolcanicCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\SchofieldCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\RemingtonCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\WinchesterCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\CarabineCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\PrigioneCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\GatlingCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\BarileCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Blue</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\IndianiCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\CatBelouCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\PanicoCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\BirraCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\EmporioCard.hpp">
+      <Filter>Header Files\GameModule\Cards\Playable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

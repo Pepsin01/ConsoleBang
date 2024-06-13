@@ -128,22 +128,62 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cards\BirraCard.cpp" />
+    <ClCompile Include="Cards\BarileCard.cpp" />
+    <ClCompile Include="Cards\AppaloosaCard.cpp" />
     <ClCompile Include="Cards\BangCard.cpp" />
+    <ClCompile Include="Cards\CarabineCard.cpp" />
+    <ClCompile Include="Cards\CatBelouCard.cpp" />
+    <ClCompile Include="Cards\EmporioCard.cpp" />
+    <ClCompile Include="Cards\GatlingCard.cpp" />
+    <ClCompile Include="Cards\IndianiCard.cpp" />
+    <ClCompile Include="Cards\PanicoCard.cpp" />
+    <ClCompile Include="Cards\SaloonCard.cpp" />
+    <ClCompile Include="Cards\SchofieldCard.cpp" />
+    <ClCompile Include="Cards\VolcanicCard.cpp" />
     <ClCompile Include="ConsoleBang!.cpp" />
     <ClCompile Include="CoreModul\GameState.cpp" />
+    <ClCompile Include="Cards\DiligenzaCard.cpp" />
+    <ClCompile Include="Cards\DuelloCard.cpp" />
     <ClCompile Include="GameUI\GameUIInput.cpp" />
     <ClCompile Include="GameUI\GameUIOutput.cpp" />
     <ClCompile Include="CoreModul\Player.cpp" />
     <ClCompile Include="CoreModul\PlayerRole.cpp" />
+    <ClCompile Include="Cards\MancatoCard.cpp" />
+    <ClCompile Include="Cards\WellsFargoCard.cpp" />
+    <ClCompile Include="Cards\MustangCard.cpp" />
+    <ClCompile Include="Cards\RemingtonCard.cpp" />
+    <ClCompile Include="Cards\WinchesterCard.cpp" />
+    <ClCompile Include="Cards\PrigioneCard.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cards\BirraCard.hpp" />
+    <ClInclude Include="Cards\BarileCard.hpp" />
+    <ClInclude Include="Cards\AppaloosaCard.hpp" />
     <ClInclude Include="Cards\BangCard.hpp" />
+    <ClInclude Include="Cards\CarabineCard.hpp" />
+    <ClInclude Include="Cards\CatBelouCard.hpp" />
+    <ClInclude Include="Cards\DiligenzaCard.hpp" />
+    <ClInclude Include="Cards\DuelloCard.hpp" />
+    <ClInclude Include="Cards\EmporioCard.hpp" />
+    <ClInclude Include="Cards\GatlingCard.hpp" />
+    <ClInclude Include="Cards\IndianiCard.hpp" />
+    <ClInclude Include="Cards\MustangCard.hpp" />
+    <ClInclude Include="Cards\PanicoCard.hpp" />
+    <ClInclude Include="Cards\SaloonCard.hpp" />
+    <ClInclude Include="Cards\SchofieldCard.hpp" />
+    <ClInclude Include="Cards\VolcanicCard.hpp" />
     <ClInclude Include="GameUI\GameUIInput.hpp" />
     <ClInclude Include="CoreModul\Card.hpp" />
     <ClInclude Include="CoreModul\GameState.hpp" />
     <ClInclude Include="GameUI\GameUIOutput.hpp" />
     <ClInclude Include="CoreModul\Player.hpp" />
     <ClInclude Include="CoreModul\PlayerRole.hpp" />
+    <ClInclude Include="Cards\MancatoCard.hpp" />
+    <ClInclude Include="Cards\WellsFargoCard.hpp" />
+    <ClInclude Include="Cards\RemingtonCard.hpp" />
+    <ClInclude Include="Cards\WinchesterCard.hpp" />
+    <ClInclude Include="Cards\PrigioneCard.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
