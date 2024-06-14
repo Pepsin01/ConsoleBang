@@ -2,9 +2,12 @@
 #include "../CoreModul/Card.hpp"
 #include "../CoreModul/Player.hpp"
 
-class BangCard : public Card
+constexpr int BANG_CARD_COUNT = 25;
+
+class BangCard : public PlayableCard
 {
-	// Inherited via ICard
-	void execute(GameStateControllor& gameState, Player& currentPlayer);
+public:
+	BangCard(GameStateControllor& gameState, CardColor color);
+	void execute() override;
 };
 

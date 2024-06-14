@@ -14,30 +14,71 @@ enum CardColor
 };
 
 class Card {
-private:
+protected:
 	GameStateControllor& gameState;
+
+	Card(
+		GameStateControllor& gameState,
+		const std::string name,
+		const std::string description,
+		CardColor color
+	) : gameState(gameState), name(name), description(description), color(color) {}
 public:
 	const std::string name;
 	const std::string description;
 	const CardColor color;
+
+	virtual ~Card() = default;
 };
 
 class PlayableCard : public Card {
+protected:
+	PlayableCard(
+		GameStateControllor& gameState,
+		const std::string name,
+		const std::string description,
+		CardColor color
+	) : Card(gameState, name, description, color) {}
 public:
 	virtual void execute() = 0;
+
+	virtual ~PlayableCard() = default;
 };
 
 class ReactionCard : public Card {
+protected:
+	ReactionCard(
+		GameStateControllor& gameState,
+		const std::string name,
+		const std::string description,
+		CardColor color
+	) : Card(gameState, name, description, color) {}
 public:
-
+	virtual ~ReactionCard() = default;
 };
 
 class BlueCard : public Card {
+protected:
+	BlueCard(
+		GameStateControllor& gameState,
+		const std::string name,
+		const std::string description, 
+		CardColor color
+	) : Card(gameState, name, description, color) {}
 public:
-
+	virtual ~BlueCard() = default;
 };
 
 class WeaponCard : public BlueCard {
+protected:
+	WeaponCard(
+		GameStateControllor& gameState,
+		const std::string name,
+		const std::string description,
+		CardColor color,
+		int range
+	) : BlueCard(gameState, name, description, color), range(range) {}
 public:
-	int range;
+	const int range;
+	virtual ~WeaponCard() = default;
 };

@@ -1,5 +1,12 @@
 #pragma once
-class DiligenzaCard
+#include "../CoreModul/Card.hpp"
+
+constexpr int DILIGENZA_CARD_COUNT = 2;
+
+class DiligenzaCard : public PlayableCard
 {
+public:
+	DiligenzaCard(GameStateControllor& gameState, CardColor color);
+	void execute() override;
 };
 

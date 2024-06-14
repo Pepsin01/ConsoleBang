@@ -1,5 +1,12 @@
 #pragma once
-class IndianiCard
+#include "../CoreModul/Card.hpp"
+
+constexpr int INDIANI_CARD_COUNT = 2;
+
+class IndianiCard : public PlayableCard
 {
+public:
+	IndianiCard(GameStateControllor& gameState, CardColor color);
+	void execute() override;
 };
 

@@ -1,5 +1,9 @@
 #include "BangCard.hpp"
 
-void BangCard::execute(GameStateControllor& gameState, Player& currentPlayer)
+BangCard::BangCard(GameStateControllor& gameState, CardColor color) : 
+	PlayableCard(gameState, "Bang", "Bang - description", color)
+{}
+
+void BangCard::execute()
 {
 }
