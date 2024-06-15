@@ -14,7 +14,7 @@ GameUIOutput::GameUIOutput() :
 		"Next player's turn will start. Prevent other players form looking at the screen!\n\n" + 
 		"Press Enter to continue.\n\n"
 	),
-	xLine(string(150, 'X') + '\n')
+	xLine(string(SCREEN_WIDTH, 'X') + '\n')
 {}
 
 void GameUIOutput::startGameScreen()
@@ -32,6 +32,11 @@ void GameUIOutput::nextPlayerWarningScreen()
 	cout << wrapWithXs(nextPlayerWarningMessage);
 }
 
+void GameUIOutput::renderScreen(const std::string& text)
+{
+	cout << wrapWithXs(text);
+}
+
 std::string GameUIOutput::wrapWithXs(const std::string& text)
 {
 	int lineCount = 0;
@@ -41,7 +46,7 @@ std::string GameUIOutput::wrapWithXs(const std::string& text)
 	}
 	int i = 0;
 	string wrappedText = "";
-	while (lineCount + i < 50)
+	while (lineCount + i < SCREEN_HEIGHT)
 	{
 		wrappedText += xLine;
 		i++;

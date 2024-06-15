@@ -38,11 +38,31 @@ Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), ga
 
 void Player::takeTurn()
 {
+	this->showPrivateProfile();
 
 }
 
 void Player::showPrivateProfile()
 {
+	string role;
+	switch (this->role)
+	{
+		case SHERIF:
+			role = "Sherif";
+			break;
+		case VICE:
+			role = "Vice";
+			break;
+		case BANDIT:
+			role = "Bandit";
+			break;
+		case RENEGADE:
+			role = "Renegade";
+			break;
+	}
+
+	PlayerUIOutput playerUIOutput;
+	playerUIOutput.playerPrivateScreen(this->gameState.getCurrentPlayerIndex(), role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->hand, this->equipment);
 }
 
 int Player::getHealth() const

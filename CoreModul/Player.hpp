@@ -7,6 +7,7 @@
 #include "Card.hpp"
 #include "PlayerRole.hpp"
 #include "GameState.hpp"
+#include "../GameUI/PlayerUIOutput.hpp"
 
 //class GameStateControllor;  // Forward declaration
 
