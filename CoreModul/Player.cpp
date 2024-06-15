@@ -1,15 +1,13 @@
 #include "Player.hpp"
 using namespace std;
 
-int Player::calculateRange()
+int Player::calculateRange() const
 {
-	int range = 1;
-	/**/
+	int range = 0;
 	for (size_t i = 0; i < equipment.size(); i++)
 	{
-		if (typeid(*equipment[i]) == typeid(WeaponCard))
+		if (WeaponCard* weapon = dynamic_cast<WeaponCard*>(equipment[i].get()))
 		{
-			WeaponCard* weapon = dynamic_cast<WeaponCard*>(equipment[i].get());
 			range += weapon->range;
 		}
 		if (typeid(*equipment[i]) == typeid(AppaloosaCard))
@@ -17,8 +15,7 @@ int Player::calculateRange()
 			range++;
 		}
 	}
-	/**/
-	return range;
+	return range == 0 ? 1 : range;
 }
 
 void Player::playCard(GameStateControllor& gameState, int cardIndex)
@@ -36,11 +33,16 @@ Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), ga
 	{
 		hand.push_back(gameState.drawCard());
 	}
+	int r = calculateRange();
 }
 
 void Player::takeTurn()
 {
 
+}
+
+void Player::showPrivateProfile()
+{
 }
 
 int Player::getHealth() const
@@ -55,23 +57,17 @@ void Player::takeDamage(int damage)
 
 unique_ptr<Card> Player::handRandomCard()
 {
-	/**/
 	shuffle(hand.begin(), hand.end(), default_random_engine{ static_cast<unsigned int>(time(nullptr)) });
 	unique_ptr<Card> card = move(hand.back());
 	hand.pop_back();
 	return card;
-	/**/
-	//return nullptr;
 }
 
 unique_ptr<Card> Player::handEquipmentCard(int index)
 {
-	/**/
 	unique_ptr<Card> card = move(hand[index]);
 	hand.erase(hand.begin() + index);
 	return card;
-	/**/
-	//return nullptr;
 }
 
 void Player::receiveCard(std::unique_ptr<Card> card)

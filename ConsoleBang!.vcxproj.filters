@@ -128,6 +128,9 @@
     <ClCompile Include="Cards\EmporioCard.cpp">
       <Filter>Source Files\GameModul\Cards\Playable</Filter>
     </ClCompile>
+    <ClCompile Include="GameUI\PlayerUIOutput.cpp">
+      <Filter>Source Files\UIModul</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoreModul\Player.hpp">
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="Cards\EmporioCard.hpp">
       <Filter>Header Files\GameModule\Cards\Playable</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\PlayerUIOutput.hpp">
+      <Filter>Header Files\UIModul</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

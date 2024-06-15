@@ -12,14 +12,18 @@
 
 class Player {
 private:
+    int health;
+
     std::vector<std::unique_ptr<Card>> hand;
     std::vector<std::unique_ptr<Card>> equipment;
-    int health;
+
     GameStateControllor& gameState;
+
+    void showPrivateProfile();
 public:
     const PlayerRole role;
     int getHealth() const;
-    int calculateRange();
+    int calculateRange() const;
 
     void playCard(GameStateControllor& gameState, int cardIndex);
     Player(GameStateControllor& gameState, PlayerRole role);

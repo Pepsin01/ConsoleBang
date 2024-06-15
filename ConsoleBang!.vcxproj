@@ -155,6 +155,7 @@
     <ClCompile Include="Cards\RemingtonCard.cpp" />
     <ClCompile Include="Cards\WinchesterCard.cpp" />
     <ClCompile Include="Cards\PrigioneCard.cpp" />
+    <ClCompile Include="GameUI\PlayerUIOutput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cards\BirraCard.hpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Cards\RemingtonCard.hpp" />
     <ClInclude Include="Cards\WinchesterCard.hpp" />
     <ClInclude Include="Cards\PrigioneCard.hpp" />
+    <ClInclude Include="GameUI\PlayerUIOutput.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

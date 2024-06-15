@@ -5,7 +5,13 @@ void GameStateControllor::mainGameLoop()
 {
 	while (!isGameEnd())
 	{
-
+		this->uiOut.nextPlayerWarningScreen();
+		if (this->uiIn.waitForEnter())
+		{
+			shared_ptr<Player> currentPlayer = this->players[this->currentPlayerIndex];
+			currentPlayer->takeTurn();
+			this->currentPlayerIndex = (this->currentPlayerIndex + 1) % this->players.size();
+		}
 	}
 }
 
@@ -76,7 +82,15 @@ GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn,
 	initializePlayers(playerCount);
 
 	currentState = GameState::START;
-	currentPlayerIndex = 0;
+
+	for (int i = 0; i < playerCount; i++)
+	{
+		if (players[i]->role == PlayerRole::SHERIF)
+		{
+			currentPlayerIndex = i;
+			break;
+		}
+	}
 }
 
 std::vector<CardColor> GameStateControllor::generateDeckColors(int cardCount)
@@ -109,8 +123,7 @@ void GameStateControllor::startGame()
 		this->uiOut.gameRulesScreen();
 
 	if (this->uiIn.waitForEnter())
-		this->currentState = GameState::PLAYER_TURN;
-
+		mainGameLoop();
 }
 
 void GameStateControllor::endGame()
