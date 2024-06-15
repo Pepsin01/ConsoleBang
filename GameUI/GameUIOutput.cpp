@@ -13,8 +13,7 @@ GameUIOutput::GameUIOutput() :
 		string("WARNING!\n\n") + 
 		"Next player's turn will start. Prevent other players form looking at the screen!\n\n" + 
 		"Press Enter to continue.\n\n"
-	),
-	xLine(string(SCREEN_WIDTH, 'X') + '\n')
+	)
 {}
 
 void GameUIOutput::startGameScreen()
