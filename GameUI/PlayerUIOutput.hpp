@@ -8,13 +8,12 @@
 class PlayerUIOutput
 {
 public:
-	void playerPublicScreen(
-		int playerNumber,
+	static void playerPublicScreen(
 		const std::string& role,
 		int health, int maxHealth,
 		std::vector<std::unique_ptr<Card>>& equipment
 	);
-	void playerPrivateScreen(
+	static void playerPrivateScreen(
 		int playerNumber,
 		const std::string& role,
 		int health, int maxHealth,
@@ -22,6 +21,6 @@ public:
 		std::vector<std::unique_ptr<Card>>& equipment
 	);
 private:
-	std::string renderCardVector(std::vector<std::unique_ptr<Card>>& cards);
+	static std::string renderCardVector(std::vector<std::unique_ptr<Card>>& cards);
 };
 

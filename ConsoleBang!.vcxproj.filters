@@ -134,6 +134,9 @@
     <ClCompile Include="GameUI\CardUIOutput.cpp">
       <Filter>Source Files\UIModul</Filter>
     </ClCompile>
+    <ClCompile Include="GameUI\PlayerUIInput.cpp">
+      <Filter>Source Files\UIModul</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoreModul\Player.hpp">
@@ -221,6 +224,9 @@
       <Filter>Header Files\UIModul</Filter>
     </ClInclude>
     <ClInclude Include="GameUI\CardUIOutput.hpp">
+      <Filter>Header Files\UIModul</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\PlayerUIInput.hpp">
       <Filter>Header Files\UIModul</Filter>
     </ClInclude>
   </ItemGroup>

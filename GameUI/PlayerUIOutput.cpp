@@ -2,11 +2,11 @@
 
 using namespace std;
 
-void PlayerUIOutput::playerPublicScreen(int playerNumber, const string& role, int health, int maxHealth, vector<unique_ptr<Card>>& equipment)
+void PlayerUIOutput::playerPublicScreen(const string& role, int health, int maxHealth, vector<unique_ptr<Card>>& equipment)
 {
-	string result = "Player " + to_string(playerNumber) + " - " + role + "\n";
+	string result = "Player's role: " + role + "\n";
 	result += "Health: " + to_string(health) + "/" + to_string(maxHealth) + "\n";
-	result += "Equipment:\n";
+	result += "Equipment cards:\n";
 	result += renderCardVector(equipment);
 	result += "\n";
 	GameUIOutput::renderScreen(result);
@@ -14,7 +14,6 @@ void PlayerUIOutput::playerPublicScreen(int playerNumber, const string& role, in
 
 void PlayerUIOutput::playerPrivateScreen(int playerNumber, const string& role, int health, int maxHealth, vector<unique_ptr<Card>>& hand, vector<unique_ptr<Card>>& equipment)
 {
-	GameUIOutput gameUIOutput;
 	string result = "Player " + to_string(playerNumber) + " - " + role + "\n";
 	result += "Health: " + to_string(health) + "/" + to_string(maxHealth) + "\n";
 	result += "Cards in hand:\n";
@@ -31,10 +30,9 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 		return "No cards\n";
 	// Render all card strings
 	vector<string> cardStrings;
-	CardUIOutput cardUIOutput;
 	for (size_t i = 0; i < cards.size(); i++)
 	{
-		cardStrings.push_back(cardUIOutput.render(*cards[i]));
+		cardStrings.push_back(CardUIOutput::render(*cards[i]));
 	}
 	
 	// Find the tallest card

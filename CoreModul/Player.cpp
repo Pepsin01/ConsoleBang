@@ -61,8 +61,7 @@ void Player::showPrivateProfile()
 			break;
 	}
 
-	PlayerUIOutput playerUIOutput;
-	playerUIOutput.playerPrivateScreen(this->gameState.getCurrentPlayerIndex(), role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->hand, this->equipment);
+	PlayerUIOutput::playerPrivateScreen(this->gameState.getCurrentPlayerIndex(), role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->hand, this->equipment);
 }
 
 int Player::getHealth() const
@@ -97,4 +96,11 @@ void Player::receiveCard(std::unique_ptr<Card> card)
 
 void Player::showPublicProfile()
 {
+	string role;
+	if (this->role == PlayerRole::SHERIF)
+		role = "Sherif";
+	else
+		role = "Unknown";
+
+	PlayerUIOutput::playerPublicScreen(role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->equipment);
 }
