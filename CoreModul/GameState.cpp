@@ -1,6 +1,49 @@
 #include "GameState.hpp"
 using namespace std;
 
+void GameStateControllor::mainGameLoop()
+{
+	while (!isGameEnd())
+	{
+
+	}
+}
+
+bool GameStateControllor::isGameEnd()
+{
+	if (isSherifDead())
+		return true;
+	if (areBanditsDead())
+		return true;
+	return false;
+}
+
+bool GameStateControllor::isSherifDead()
+{
+	for (shared_ptr<Player> player : this->players)
+	{
+		if (player->role == PlayerRole::SHERIF && player->getHealth() <= 0)
+			return true;
+	}
+	return false;
+}
+
+bool GameStateControllor::areBanditsDead()
+{
+	int banditCount = 0;
+	int deadBanditCount = 0;
+	for (shared_ptr<Player> player : this->players)
+	{
+		if (player->role == PlayerRole::BANDIT)
+		{
+			banditCount++;
+			if (player->getHealth() <= 0)
+				deadBanditCount++;
+		}
+	}
+	return deadBanditCount == banditCount;
+}
+
 GameStateControllor& GameStateControllor::getInstance(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount)
 {
 	static GameStateControllor instance(uiOut, uiIn, playerCount);
@@ -66,9 +109,8 @@ void GameStateControllor::startGame()
 		this->uiOut.gameRulesScreen();
 
 	if (this->uiIn.waitForEnter())
-		{
 		this->currentState = GameState::PLAYER_TURN;
-	}
+
 }
 
 void GameStateControllor::endGame()
@@ -121,14 +163,14 @@ void GameStateControllor::initializeDeck()
 	addCardsToDeck<WinchesterCard>(deck, *this, colors, WINCHESTER_CARD_COUNT);
 
 	// Shuffle the deck
-	auto rng = std::default_random_engine{ static_cast<unsigned int>(std::time(nullptr)) };
-	std::shuffle(std::begin(deck), std::end(deck), rng);
+	shuffle(begin(deck), end(deck), default_random_engine{ static_cast<unsigned int>(time(nullptr)) });
 }
 
 void GameStateControllor::initializePlayers(int playerCount)
 {
 	players = vector<shared_ptr<Player>>(playerCount);
 
+	// Randomize player roles
 	PlayerRoleRandomizer prr = PlayerRoleRandomizer(playerCount);
 
 	for (size_t i = 0; i < playerCount; i++)

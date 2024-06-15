@@ -70,6 +70,14 @@ private:
             colors.pop_back();
         }
     }
+
+    void mainGameLoop();
+
+    bool isGameEnd();
+
+    bool isSherifDead();
+
+    bool areBanditsDead();
 public:
     static GameStateControllor& getInstance(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount);  // Singleton pattern method
     

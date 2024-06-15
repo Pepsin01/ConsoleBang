@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <algorithm>
+#include <random>
+#include <ctime>
 #include "Card.hpp"
 #include "PlayerRole.hpp"
 #include "GameState.hpp"
@@ -10,12 +13,23 @@
 class Player {
 private:
     std::vector<std::unique_ptr<Card>> hand;
-    const PlayerRole role;
+    std::vector<std::unique_ptr<Card>> equipment;
     int health;
     GameStateControllor& gameState;
 public:
-    // method to play a card
+    const PlayerRole role;
+    int getHealth() const;
+    int calculateRange();
+
     void playCard(GameStateControllor& gameState, int cardIndex);
     Player(GameStateControllor& gameState, PlayerRole role);
+
+    void takeTurn();
+    void takeDamage(int damage);
+    void showPublicProfile();
+
+    std::unique_ptr<Card> handRandomCard();
+    std::unique_ptr<Card> handEquipmentCard(int index);
+    void receiveCard(std::unique_ptr<Card> card);
 };
 
