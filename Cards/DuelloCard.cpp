@@ -4,6 +4,7 @@ DuelloCard::DuelloCard(GameStateControllor& gameState, CardColor color) :
 	PlayableCard(gameState, "Duello", "Duello - description", color)
 {}
 
-void DuelloCard::execute()
+bool DuelloCard::execute(Player & player)
 {
+	return false;
 }

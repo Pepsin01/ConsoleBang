@@ -7,6 +7,6 @@ class WellsFargoCard : public PlayableCard
 {
 public:
 	WellsFargoCard(GameStateControllor& gameState, CardColor color);
-	void execute() override;
+	bool execute(Player& player) override;
 };
 

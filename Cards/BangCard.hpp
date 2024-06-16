@@ -8,6 +8,6 @@ class BangCard : public PlayableCard
 {
 public:
 	BangCard(GameStateControllor& gameState, CardColor color);
-	void execute() override;
+	bool execute(Player& player) override;
 };
 

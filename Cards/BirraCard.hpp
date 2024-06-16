@@ -7,6 +7,6 @@ class BirraCard : public PlayableCard
 {
 public:
 	BirraCard(GameStateControllor& gameState, CardColor color);
-	void execute() override;
+	bool execute(Player& player) override;
 };
 

@@ -7,6 +7,6 @@ class IndianiCard : public PlayableCard
 {
 public:
 	IndianiCard(GameStateControllor& gameState, CardColor color);
-	void execute() override;
+	bool execute(Player& player) override;
 };
 

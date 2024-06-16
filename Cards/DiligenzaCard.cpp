@@ -5,6 +5,7 @@ DiligenzaCard::DiligenzaCard(GameStateControllor& gameState, CardColor color) :
 {
 }
 
-void DiligenzaCard::execute()
+bool DiligenzaCard::execute(Player& player)
 {
+	return false;
 }

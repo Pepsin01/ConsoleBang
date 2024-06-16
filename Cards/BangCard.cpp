@@ -4,6 +4,7 @@ BangCard::BangCard(GameStateControllor& gameState, CardColor color) :
 	PlayableCard(gameState, "Bang", "Bang - description", color)
 {}
 
-void BangCard::execute()
+bool BangCard::execute(Player & player)
 {
+	return false;
 }

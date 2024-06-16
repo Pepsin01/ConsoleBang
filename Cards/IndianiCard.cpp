@@ -4,6 +4,7 @@ IndianiCard::IndianiCard(GameStateControllor& gameState, CardColor color) :
 	PlayableCard(gameState, "Indiani", "Indiani - description", color)
 {}
 
-void IndianiCard::execute()
+bool IndianiCard::execute(Player & player)
 {
+	return false;
 }

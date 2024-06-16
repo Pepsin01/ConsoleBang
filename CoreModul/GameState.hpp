@@ -9,6 +9,7 @@
 #include "Player.hpp"
 #include "../GameUI/GameUIOutput.hpp"
 #include "../GameUI/GameUIInput.hpp"
+#include "../GameUI/CardUIInput.hpp"
 #include "PlayerRole.hpp"
 #include "Card.hpp"
 #include "../Cards/AppaloosaCard.hpp"
@@ -97,7 +98,7 @@ public:
 
     void discardCard(std::unique_ptr<Card> card);
 
-    void castDebuff(std::unique_ptr<Card> card);
+    std::unique_ptr<Card> castDebuff(std::unique_ptr<Card> card);
 };
 
 

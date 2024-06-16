@@ -27,12 +27,18 @@ private:
 
     void moveCardToEquipment(std::unique_ptr<Card> card);
     void replaceWeapon(std::unique_ptr<Card> card);
+
+    bool passesTurn();
+    bool evaluatePrigione();
+
+    std::string roleToString() const;
 public:
     const PlayerRole role;
     int getHealth() const;
     int calculateRange() const;
     int getHandSize() const;
     GameStateControllor& getGameState() const;
+    bool isDead() const;
 
     void playCard(int cardIndex);
     Player(GameStateControllor& gameState, PlayerRole role);
@@ -44,6 +50,9 @@ public:
     std::unique_ptr<Card> handRandomCard();
     std::unique_ptr<Card> handEquipmentCard(int index);
     void receiveCard(std::unique_ptr<Card> card);
+    void receiveDebuff(std::unique_ptr<Card> card);
     void discardCard(int index);
+
+
 };
 

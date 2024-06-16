@@ -85,3 +85,13 @@ string CardUIOutput::render(Card& card)
 
 	return result;
 }
+
+std::string CardUIOutput::sliceCard(const std::string& card)
+{
+    string result;
+    int cardHeight = card.size() / CARD_WIDTH;
+    for (int i = 0; i < cardHeight; i++) {
+		result += card.substr(i * CARD_WIDTH, CARD_WIDTH) + '\n';
+	}
+    return result;
+}

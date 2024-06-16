@@ -5,6 +5,7 @@ CatBelouCard::CatBelouCard(GameStateControllor& gameState, CardColor color) :
 {
 }
 
-void CatBelouCard::execute()
+bool CatBelouCard::execute(Player& player)
 {
+	return false;
 }

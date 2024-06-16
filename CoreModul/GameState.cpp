@@ -147,8 +147,16 @@ void GameStateControllor::discardCard(std::unique_ptr<Card> card)
 	deck.push_back(move(card));
 }
 
-void GameStateControllor::castDebuff(std::unique_ptr<Card> card)
+std::unique_ptr<Card> GameStateControllor::castDebuff(std::unique_ptr<Card> card)
 {
+	int targetIndex = CardUIInput::selectCastTarget(*this, *card);
+	
+	// The debuff was not casted
+	if (targetIndex == -1)
+		return move(card);
+
+	players[targetIndex]->receiveDebuff(move(card));
+	return nullptr;
 }
 
 void GameStateControllor::initializeDeck()

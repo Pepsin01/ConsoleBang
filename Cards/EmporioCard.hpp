@@ -7,6 +7,6 @@ class EmporioCard : public PlayableCard
 {
 public:
 	EmporioCard(GameStateControllor& gameState, CardColor color);
-	void execute() override;
+	bool execute(Player& player) override;
 };
 

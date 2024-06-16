@@ -29,6 +29,28 @@ void PlayerUIOutput::playerPrivateScreen(int playerNumber, const string& role, i
 	GameUIOutput::renderScreen(result);
 }
 
+void PlayerUIOutput::playerDeadScreen()
+{
+	GameUIOutput::renderScreen("You are dead!\n\nPress ENTER to continue.\n");
+	GameUIInput::waitForEnter();
+}
+
+void PlayerUIOutput::playerJailScreen()
+{
+	GameUIOutput::renderScreen("You are in jail!\n\nPress ENTER to continue.\n");
+	GameUIInput::waitForEnter();
+}
+
+void PlayerUIOutput::cannotPlayCardScreen(Card& card)
+{
+	GameUIOutput::renderScreen(
+		"You cannot play this card now!\n" +
+		CardUIOutput::sliceCard(CardUIOutput::render(card)) +
+		"\nPress ENTER to continue.\n"
+	);
+	GameUIInput::waitForEnter();
+}
+
 string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 {
 	if (cards.empty())

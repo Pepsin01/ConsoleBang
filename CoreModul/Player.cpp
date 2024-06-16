@@ -28,20 +28,35 @@ GameStateControllor& Player::getGameState() const
 	return gameState;
 }
 
+bool Player::isDead() const
+{
+	return health <= 0;
+}
+
 void Player::playCard(int cardIndex)
 {
 	if (BlueCard* blueCard = dynamic_cast<BlueCard*>(hand[cardIndex].get()))
 	{
 		if (WeaponCard* weapon = dynamic_cast<WeaponCard*>(hand[cardIndex].get()))
 			replaceWeapon(move(hand[cardIndex]));
-		else if (PrigioneCard* prigione = dynamic_cast<PrigioneCard*>(hand[cardIndex].get()))
+		else if (DebuffCard* debuff = dynamic_cast<DebuffCard*>(hand[cardIndex].get()))
 		{
+			auto result = gameState.castDebuff(move(hand[cardIndex])); // cast the debuff
+			hand.erase(hand.begin() + cardIndex); // remove the card from the player's hand
 
+			// if the debuff was not casted, return the card to the player's hand
+			if (!result)
+				receiveCard(move(hand[cardIndex])); // return the card to the player's hand
 		}
 		else
 			moveCardToEquipment(move(hand[cardIndex]));
 	}
-	GameUIInput::waitForEnter();
+	else if (PlayableCard* playableCard = dynamic_cast<PlayableCard*>(hand[cardIndex].get()))
+	{
+
+	}
+	else
+		PlayerUIOutput::cannotPlayCardScreen(*hand[cardIndex]);
 }
 
 
@@ -62,39 +77,30 @@ Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), ga
 
 void Player::takeTurn()
 {
-	// at the beginning of the turn, player draws two cards
-	this->receiveCard(gameState.drawCard());
-	this->receiveCard(gameState.drawCard());
-
-	this->showPrivateProfile();
-
-	// player's turn loop
-	while (!PlayerUIInput::parseCommand(*this))
+	if (!passesTurn())
 	{
+		// at the beginning of the turn, player draws two cards
+		this->receiveCard(gameState.drawCard());
+		this->receiveCard(gameState.drawCard());
+
 		this->showPrivateProfile();
+
+		// player's turn loop
+		while (!PlayerUIInput::parseCommand(*this))
+		{
+			this->showPrivateProfile();
+		}
 	}
 }
 
 void Player::showPrivateProfile()
 {
-	string role;
-	switch (this->role)
-	{
-		case SHERIF:
-			role = "Sherif";
-			break;
-		case VICE:
-			role = "Vice";
-			break;
-		case BANDIT:
-			role = "Bandit";
-			break;
-		case RENEGADE:
-			role = "Renegade";
-			break;
-	}
-
-	PlayerUIOutput::playerPrivateScreen(this->gameState.getCurrentPlayerIndex(), role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->hand, this->equipment);
+	PlayerUIOutput::playerPrivateScreen(
+		this->gameState.getCurrentPlayerIndex(),
+		roleToString(), this->health,
+		this->role == PlayerRole::SHERIF ? 5 : 4,
+		this->hand, this->equipment
+	);
 }
 
 void Player::moveCardToEquipment(std::unique_ptr<Card> card)
@@ -127,6 +133,58 @@ void Player::replaceWeapon(std::unique_ptr<Card> card)
 	equipment.push_back(move(card));
 }
 
+bool Player::passesTurn()
+{
+	if (isDead())
+	{
+		PlayerUIOutput::playerDeadScreen();
+		return true;
+	}
+	if (!evaluatePrigione())
+	{
+		PlayerUIOutput::playerJailScreen();
+		return true;
+	}
+	return false;
+}
+
+bool Player::evaluatePrigione()
+{
+	for (size_t i = 0; i < equipment.size(); i++)
+		if (typeid(equipment[i]) == typeid(PrigioneCard))
+		{
+			gameState.discardCard(move(equipment[i]));
+			equipment.erase(equipment.begin() + i);
+			unique_ptr<Card> card = gameState.drawCard();
+			if (card->color == CardColor::HEARTS)
+			{
+				gameState.discardCard(move(card));
+				return true;
+			}
+			else
+			{
+				gameState.discardCard(move(card));
+				return false;
+			}
+		}
+	return true;
+}
+
+std::string Player::roleToString() const
+{
+	switch (this->role)
+	{
+	case SHERIF:
+		return "Sherif";
+	case VICE:
+		return "Vice";
+	case BANDIT:
+		return "Bandit";
+	case RENEGADE:
+		return "Renegade";
+	}
+}
+
 int Player::getHealth() const
 {
 	return health;
@@ -157,6 +215,21 @@ void Player::receiveCard(std::unique_ptr<Card> card)
 	hand.push_back(move(card));
 }
 
+void Player::receiveDebuff(std::unique_ptr<Card> card)
+{
+	for (size_t i = 0; i < equipment.size(); i++)
+	{
+		if (typeid(card) == typeid(equipment[i]))
+		{
+			gameState.discardCard(move(equipment[i]));
+			equipment.erase(equipment.begin() + i);
+			equipment.push_back(move(card));
+			return;
+		}
+	}
+	equipment.push_back(move(card));
+}
+
 void Player::discardCard(int index)
 {
 	unique_ptr<Card> card = move(hand[index]);
@@ -167,10 +240,15 @@ void Player::discardCard(int index)
 void Player::showPublicProfile()
 {
 	string role;
-	if (this->role == PlayerRole::SHERIF)
-		role = "Sherif";
+	if (isDead())
+		role = roleToString();
 	else
-		role = "Unknown";
+	{
+		if (this->role == PlayerRole::SHERIF)
+			role = "Sherif";
+		else
+			role = "Unknown";
+	}
 
 	PlayerUIOutput::playerPublicScreen(role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->equipment);
 }

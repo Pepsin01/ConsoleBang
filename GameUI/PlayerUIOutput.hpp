@@ -21,6 +21,9 @@ public:
 		std::vector<std::unique_ptr<Card>>& hand,
 		std::vector<std::unique_ptr<Card>>& equipment
 	);
+	static void playerDeadScreen();
+	static void playerJailScreen();
+	static void cannotPlayCardScreen(Card& card);
 private:
 	static std::string renderCardVector(std::vector<std::unique_ptr<Card>>& cards);
 };

@@ -5,6 +5,7 @@ PanicoCard::PanicoCard(GameStateControllor& gameState, CardColor color) :
 {
 }
 
-void PanicoCard::execute()
+bool PanicoCard::execute(Player& player)
 {
+	return false;
 }

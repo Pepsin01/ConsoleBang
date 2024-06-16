@@ -4,6 +4,7 @@ EmporioCard::EmporioCard(GameStateControllor& gameState, CardColor color) :
 	PlayableCard(gameState, "Emporio", "Emporio - description", color)
 {}
 
-void EmporioCard::execute()
+bool EmporioCard::execute(Player & player)
 {
+	return false;
 }

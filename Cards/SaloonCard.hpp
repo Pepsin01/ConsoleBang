@@ -7,6 +7,6 @@ class SaloonCard : public PlayableCard
 {
 public:
 	SaloonCard(GameStateControllor& gameState, CardColor color);
-	void execute();
+	bool execute(Player& player) override;
 };
 

@@ -7,6 +7,6 @@ class GatlingCard : public PlayableCard
 {
 public:
 	GatlingCard(GameStateControllor& gameState, CardColor color);
-	void execute() override;
+	bool execute(Player& player) override;
 };
 

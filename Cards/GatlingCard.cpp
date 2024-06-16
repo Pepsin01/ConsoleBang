@@ -4,6 +4,7 @@ GatlingCard::GatlingCard(GameStateControllor& gameState, CardColor color) :
 	PlayableCard(gameState, "Gatling", "Gatling - description", color)
 {}
 
-void GatlingCard::execute()
+bool GatlingCard::execute(Player & player)
 {
+	return false;
 }

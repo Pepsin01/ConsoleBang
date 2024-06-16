@@ -5,6 +5,7 @@ SaloonCard::SaloonCard(GameStateControllor& gameState, CardColor color) :
 {
 }
 
-void SaloonCard::execute()
+bool SaloonCard::execute(Player& player)
 {
+	return false;
 }

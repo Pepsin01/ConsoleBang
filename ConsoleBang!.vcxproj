@@ -145,6 +145,7 @@
     <ClCompile Include="CoreModul\GameState.cpp" />
     <ClCompile Include="Cards\DiligenzaCard.cpp" />
     <ClCompile Include="Cards\DuelloCard.cpp" />
+    <ClCompile Include="GameUI\CardUIInput.cpp" />
     <ClCompile Include="GameUI\CardUIOutput.cpp" />
     <ClCompile Include="GameUI\GameUIInput.cpp" />
     <ClCompile Include="GameUI\GameUIOutput.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Cards\SaloonCard.hpp" />
     <ClInclude Include="Cards\SchofieldCard.hpp" />
     <ClInclude Include="Cards\VolcanicCard.hpp" />
+    <ClInclude Include="GameUI\CardUIInput.hpp" />
     <ClInclude Include="GameUI\CardUIOutput.hpp" />
     <ClInclude Include="GameUI\GameUIInput.hpp" />
     <ClInclude Include="CoreModul\Card.hpp" />

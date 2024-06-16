@@ -40,7 +40,7 @@ protected:
 		CardColor color
 	) : Card(gameState, name, description, color) {}
 public:
-	virtual void execute() = 0;
+	virtual bool execute(Player& player) = 0;
 
 	virtual ~PlayableCard() = default;
 };
@@ -67,6 +67,18 @@ protected:
 	) : Card(gameState, name, description, color) {}
 public:
 	virtual ~BlueCard() = default;
+};
+
+class DebuffCard : public BlueCard {
+protected:
+	DebuffCard(
+		GameStateControllor& gameState,
+		const std::string name,
+		const std::string description,
+		CardColor color
+	) : BlueCard(gameState, name, description, color) {}
+public:
+	virtual ~DebuffCard() = default;
 };
 
 class WeaponCard : public BlueCard {

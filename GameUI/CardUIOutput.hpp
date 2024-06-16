@@ -13,5 +13,6 @@ private:
 	static std::vector<std::string> divideIntoLines(const std::string& text, int lineLength);
 public:
 	static std::string render(Card& card);
+	static std::string sliceCard(const std::string& card);
 };
 

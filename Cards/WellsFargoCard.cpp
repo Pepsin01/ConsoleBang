@@ -4,6 +4,7 @@ WellsFargoCard::WellsFargoCard(GameStateControllor& gameState, CardColor color) 
 	PlayableCard(gameState, "Wells Fargo", "Wells Fargo - description", color)
 {}
 
-void WellsFargoCard::execute()
+bool WellsFargoCard::execute(Player & player)
 {
+	return false;
 }
