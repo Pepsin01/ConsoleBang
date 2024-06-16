@@ -63,6 +63,8 @@ GameState GameStateControllor::getCurrentState() const
 
 shared_ptr<Player> GameStateControllor::getPlayer(int index)
 {
+	if (index < 0 || index >= this->players.size())
+		return nullptr;
 	return this->players[index];
 }
 
@@ -138,6 +140,15 @@ std::unique_ptr<Card> GameStateControllor::drawCard()
 	auto card = move(deck.front());
 	deck.pop_front();
 	return card;
+}
+
+void GameStateControllor::discardCard(std::unique_ptr<Card> card)
+{
+	deck.push_back(move(card));
+}
+
+void GameStateControllor::castDebuff(std::unique_ptr<Card> card)
+{
 }
 
 void GameStateControllor::initializeDeck()

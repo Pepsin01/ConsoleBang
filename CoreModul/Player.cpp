@@ -18,9 +18,33 @@ int Player::calculateRange() const
 	return range == 0 ? 1 : range;
 }
 
-void Player::playCard(GameStateControllor& gameState, int cardIndex)
+int Player::getHandSize() const
 {
+	return hand.size();
 }
+
+GameStateControllor& Player::getGameState() const
+{
+	return gameState;
+}
+
+void Player::playCard(int cardIndex)
+{
+	if (BlueCard* blueCard = dynamic_cast<BlueCard*>(hand[cardIndex].get()))
+	{
+		if (WeaponCard* weapon = dynamic_cast<WeaponCard*>(hand[cardIndex].get()))
+			replaceWeapon(move(hand[cardIndex]));
+		else if (PrigioneCard* prigione = dynamic_cast<PrigioneCard*>(hand[cardIndex].get()))
+		{
+
+		}
+		else
+			moveCardToEquipment(move(hand[cardIndex]));
+	}
+	GameUIInput::waitForEnter();
+}
+
+
 
 Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), gameState(gameState)
 {
@@ -38,8 +62,17 @@ Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), ga
 
 void Player::takeTurn()
 {
+	// at the beginning of the turn, player draws two cards
+	this->receiveCard(gameState.drawCard());
+	this->receiveCard(gameState.drawCard());
+
 	this->showPrivateProfile();
 
+	// player's turn loop
+	while (!PlayerUIInput::parseCommand(*this))
+	{
+		this->showPrivateProfile();
+	}
 }
 
 void Player::showPrivateProfile()
@@ -62,6 +95,36 @@ void Player::showPrivateProfile()
 	}
 
 	PlayerUIOutput::playerPrivateScreen(this->gameState.getCurrentPlayerIndex(), role, this->health, this->role == PlayerRole::SHERIF ? 5 : 4, this->hand, this->equipment);
+}
+
+void Player::moveCardToEquipment(std::unique_ptr<Card> card)
+{
+	for (size_t i = 0; i < equipment.size(); i++)
+	{
+		if(typeid(card) == typeid(equipment[i]))
+		{
+			gameState.discardCard(move(equipment[i]));
+			equipment.erase(equipment.begin() + i);
+			equipment.push_back(move(card));
+			return;
+		}
+	}
+	equipment.push_back(move(card));
+}
+
+void Player::replaceWeapon(std::unique_ptr<Card> card)
+{
+	for (size_t i = 0; i < equipment.size(); i++)
+	{
+		if (WeaponCard* weapon = dynamic_cast<WeaponCard*>(equipment[i].get()))
+		{
+			gameState.discardCard(move(equipment[i]));
+			equipment.erase(equipment.begin() + i);
+			equipment.push_back(move(card));
+			return;
+		}
+	}
+	equipment.push_back(move(card));
 }
 
 int Player::getHealth() const
@@ -92,6 +155,13 @@ unique_ptr<Card> Player::handEquipmentCard(int index)
 void Player::receiveCard(std::unique_ptr<Card> card)
 {
 	hand.push_back(move(card));
+}
+
+void Player::discardCard(int index)
+{
+	unique_ptr<Card> card = move(hand[index]);
+	hand.erase(hand.begin() + index);
+	gameState.discardCard(move(card));
 }
 
 void Player::showPublicProfile()

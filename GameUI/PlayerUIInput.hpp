@@ -1,9 +1,13 @@
 #pragma once
+#include <iostream>
+#include <string>
 #include "../CoreModul/Player.hpp"
+#include "GameUIOutput.hpp"
+#include "GameUIInput.hpp"
 
 class PlayerUIInput
 {
 public:
-	void parseCommad(Player& player);
+	static bool parseCommand(Player& player);
 };
 

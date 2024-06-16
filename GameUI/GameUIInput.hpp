@@ -2,8 +2,8 @@
 
 class GameUIInput
 {
-	public:
-	bool waitForEnter();
-	int getPlayerCount();
+public:
+	static bool waitForEnter();
+	static int getPlayerCount();
 };
 

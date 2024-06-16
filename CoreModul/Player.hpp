@@ -8,6 +8,9 @@
 #include "PlayerRole.hpp"
 #include "GameState.hpp"
 #include "../GameUI/PlayerUIOutput.hpp"
+#include "../GameUI/PlayerUIInput.hpp"
+#include "../GameUI/GameUIOutput.hpp"
+#include "../GameUI/GameUIInput.hpp"
 
 //class GameStateControllor;  // Forward declaration
 
@@ -21,12 +24,17 @@ private:
     GameStateControllor& gameState;
 
     void showPrivateProfile();
+
+    void moveCardToEquipment(std::unique_ptr<Card> card);
+    void replaceWeapon(std::unique_ptr<Card> card);
 public:
     const PlayerRole role;
     int getHealth() const;
     int calculateRange() const;
+    int getHandSize() const;
+    GameStateControllor& getGameState() const;
 
-    void playCard(GameStateControllor& gameState, int cardIndex);
+    void playCard(int cardIndex);
     Player(GameStateControllor& gameState, PlayerRole role);
 
     void takeTurn();
@@ -36,5 +44,6 @@ public:
     std::unique_ptr<Card> handRandomCard();
     std::unique_ptr<Card> handEquipmentCard(int index);
     void receiveCard(std::unique_ptr<Card> card);
+    void discardCard(int index);
 };
 

@@ -9,7 +9,12 @@ void PlayerUIOutput::playerPublicScreen(const string& role, int health, int maxH
 	result += "Equipment cards:\n";
 	result += renderCardVector(equipment);
 	result += "\n";
-	GameUIOutput::renderScreen(result);
+	GameUIOutput::renderScreen(
+		result +
+		"Press ENTER to continue.\n"
+	);
+	GameUIInput::waitForEnter();
+
 }
 
 void PlayerUIOutput::playerPrivateScreen(int playerNumber, const string& role, int health, int maxHealth, vector<unique_ptr<Card>>& hand, vector<unique_ptr<Card>>& equipment)
@@ -53,7 +58,7 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 	while (cardsRendered < cards.size())
 	{
 		// Render the slot numbers for each card
-		for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() - cardsRendered : SCREEN_WIDTH / CARD_WIDTH); j++)
+		for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
 		{
 			result += to_string(j) + string(CARD_WIDTH - to_string(j).size(), ' ');
 		}
@@ -62,7 +67,7 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 		for (int i = 0; i < tallestCard; i++)
 		{
 			// Render each line of each card
-			for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() - cardsRendered : SCREEN_WIDTH / CARD_WIDTH); j++)
+			for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
 			{
 				// If the card is shorter than the current line, fill with spaces
 				if (cardStrings[j].size() < i * CARD_WIDTH)

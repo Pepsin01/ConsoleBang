@@ -94,6 +94,10 @@ public:
     void endGame();
 
     std::unique_ptr<Card> drawCard();
+
+    void discardCard(std::unique_ptr<Card> card);
+
+    void castDebuff(std::unique_ptr<Card> card);
 };
 
 

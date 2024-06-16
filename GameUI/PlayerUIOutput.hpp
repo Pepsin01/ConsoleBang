@@ -1,9 +1,10 @@
 #pragma once
+#include "../CoreModul/Card.hpp"
+#include "CardUIOutput.hpp"
+#include "GameUIInput.hpp"
+#include "GameUIOutput.hpp"
 #include <string>
 #include <vector>
-#include "GameUIOutput.hpp"
-#include "CardUIOutput.hpp"
-#include "../CoreModul/Card.hpp"
 
 class PlayerUIOutput
 {

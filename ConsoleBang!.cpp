@@ -24,7 +24,7 @@ int main()
 
 	GameUIOutput gameUI;
 	GameUIInput gameInput;
-	GameStateControllor& gameState = GameStateControllor::getInstance(gameUI, gameInput, gameInput.getPlayerCount());
+	GameStateControllor& gameState = GameStateControllor::getInstance(gameUI, gameInput, GameUIInput::getPlayerCount());
 
 	gameState.startGame();
 }
