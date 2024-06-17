@@ -4,6 +4,8 @@
 
 Console Bang! is a terminal-based card game inspired by the popular Bang! game. This project allows multiple players to engage in an interactive game session on a single computer. The game includes various modules handling game logic, player interactions, and game state management.
 
+For more information about the game rules and card effects [look here](https://en.wikipedia.org/wiki/Bang!_(card_game)).
+
 ## Features
 
 - **Multiplayer Support**: Multiple players can play the game on the same computer, taking turns as dictated by the game rules.
