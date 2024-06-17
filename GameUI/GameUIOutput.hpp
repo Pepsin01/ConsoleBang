@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
 
-constexpr int SCREEN_WIDTH = 150;
-constexpr int SCREEN_HEIGHT = 50;
+constexpr int SCREEN_WIDTH = 150; // width of the screen in characters
+constexpr int SCREEN_HEIGHT = 50; // height of the screen in characters
 const std::string xLine = std::string(SCREEN_WIDTH, 'X') + '\n'; // line of Xs that fills the screen width
 
+/*
+* @brief Class that handles the output for the game UI
+*/
 class GameUIOutput
 {
 public:
@@ -12,10 +15,14 @@ public:
 	void gameRulesScreen();
 	void endGameScreen();
 	void nextPlayerWarningScreen();
+	/*
+	* @brief Renders the screen with the given text and the rest of the screen fills with Xs.
+	* @param text Text to render
+	*/
 	static void renderScreen(const std::string& text);
 	GameUIOutput();
 private:
-	static std::string wrapWithXs(const std::string& text);
+	static std::string wrapWithXs(const std::string& text); // wraps the text with Xs to fill the screen width
 
 	const std::string beforeStartMessage;
 	const std::string rulesMessage;

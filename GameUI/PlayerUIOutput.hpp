@@ -6,6 +6,9 @@
 #include <string>
 #include <vector>
 
+/*
+* @brief Class that handles the output for the player UI
+*/
 class PlayerUIOutput
 {
 public:

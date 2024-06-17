@@ -3,14 +3,15 @@ using namespace std;
 
 void GameStateControllor::mainGameLoop()
 {
+	// Main game loop
 	while (!isGameEnd())
 	{
 		this->uiOut.nextPlayerWarningScreen();
 		if (this->uiIn.waitForEnter())
 		{
-			shared_ptr<Player> currentPlayer = this->players[this->currentPlayerIndex];
-			currentPlayer->takeTurn();
-			this->currentPlayerIndex = (this->currentPlayerIndex + 1) % this->players.size();
+			shared_ptr<Player> currentPlayer = this->players[this->currentPlayerIndex]; // Get the current player
+			currentPlayer->takeTurn(); // Let the current player take a turn
+			this->currentPlayerIndex = (this->currentPlayerIndex + 1) % this->players.size(); // Move to the next player
 		}
 	}
 	endGame();
@@ -18,9 +19,9 @@ void GameStateControllor::mainGameLoop()
 
 bool GameStateControllor::isGameEnd()
 {
-	if (isSherifDead())
+	if (isSherifDead()) // Check if the sherif is dead
 		return true;
-	if (areBanditsDead())
+	if (areBanditsDead()) // Check if all bandits are dead
 		return true;
 	return false;
 }
@@ -81,11 +82,12 @@ int GameStateControllor::getCurrentPlayerIndex() const
 
 GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount) : uiOut(uiOut), uiIn(uiIn)
 {
-	initializeDeck();
+	initializeDeck(); // Initializes all cards that will be used in the game
 	initializePlayers(playerCount);
-
+	
 	currentState = GameState::START;
 
+	// Sheriff is the first player
 	for (int i = 0; i < playerCount; i++)
 	{
 		if (players[i]->role == PlayerRole::SHERIF)
@@ -98,7 +100,7 @@ GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn,
 
 std::vector<CardColor> GameStateControllor::generateDeckColors(int cardCount)
 {
-	int iterations = cardCount / 4;
+	int iterations = cardCount / 4; 
 	vector<CardColor> colors;
 	for (int i = 0; i < iterations; i++)
 	{
@@ -108,6 +110,7 @@ std::vector<CardColor> GameStateControllor::generateDeckColors(int cardCount)
 		colors.push_back(CardColor::SPADES);
 	}
 
+	// If the number of cards is not divisible by 4, add the remaining colors
 	int rest = cardCount % 4;
 	if (rest > 0)
 		colors.push_back(CardColor::HEARTS);
@@ -163,10 +166,10 @@ std::unique_ptr<Card> GameStateControllor::castDebuff(std::unique_ptr<Card> card
 
 int GameStateControllor::calculateDistance(int attackerIndex, int defenderIndex)
 {
-	int direct_distance = abs(attackerIndex - defenderIndex);
-	int wrapped_distance = players.size() - direct_distance;
+	int direct_distance = abs(attackerIndex - defenderIndex); // Direct distance between the attacker and the defender
+	int wrapped_distance = players.size() - direct_distance; // Complementary distance if we assume the end of the vector is connected to the beginning
 
-	return min(direct_distance, wrapped_distance) + getPlayer(defenderIndex)->calculateDistanceModifier();
+	return min(direct_distance, wrapped_distance) + getPlayer(defenderIndex)->calculateDistanceModifier(); // Return the minimum distance plus the distance modifier of the defender
 }
 
 void GameStateControllor::initializeDeck()

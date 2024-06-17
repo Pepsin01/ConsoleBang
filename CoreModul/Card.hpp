@@ -9,6 +9,9 @@
 class GameStateControllor;  // Forward declaration
 class Player;  // Forward declaration
 
+/*
+* @brief Enum that represents the color of the card
+*/
 enum CardColor
 {
 	HEARTS,
@@ -17,6 +20,9 @@ enum CardColor
 	SPADES
 };
 
+/*
+* @brief Class that represents a card in the game
+*/
 class Card {
 protected:
 	GameStateControllor& gameState;
@@ -35,6 +41,10 @@ public:
 	virtual ~Card() = default;
 };
 
+/*
+* @brief Class that represents a card that can be played
+
+*/
 class PlayableCard : public Card {
 protected:
 	PlayableCard(
@@ -49,6 +59,9 @@ public:
 	virtual ~PlayableCard() = default;
 };
 
+/*
+* @brief Class that represents a card that can be used only as a reaction
+*/
 class ReactionCard : public Card {
 protected:
 	ReactionCard(
@@ -61,6 +74,9 @@ public:
 	virtual ~ReactionCard() = default;
 };
 
+/*
+* @brief Class that represents a card that can be put into the equipment
+*/
 class BlueCard : public Card {
 protected:
 	BlueCard(
@@ -73,6 +89,9 @@ public:
 	virtual ~BlueCard() = default;
 };
 
+/*
+* @brief Class that represents a card that can be put into the equipment and has a debuff effect
+*/
 class DebuffCard : public BlueCard {
 protected:
 	DebuffCard(
@@ -85,6 +104,9 @@ public:
 	virtual ~DebuffCard() = default;
 };
 
+/*
+* @brief Class that represents a card that can be put into the equipment and has a effect on the range of the player
+*/
 class WeaponCard : public BlueCard {
 protected:
 	WeaponCard(
