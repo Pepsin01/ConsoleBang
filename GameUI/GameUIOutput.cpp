@@ -13,7 +13,8 @@ GameUIOutput::GameUIOutput() :
 		string("WARNING!\n\n") + 
 		"Next player's turn will start. Prevent other players form looking at the screen!\n\n" + 
 		"Press Enter to continue.\n\n"
-	)
+	),
+	endGameMessage("Game Over!\n\n")
 {}
 
 void GameUIOutput::startGameScreen()
@@ -24,6 +25,11 @@ void GameUIOutput::startGameScreen()
 void GameUIOutput::gameRulesScreen()
 {
 	cout << wrapWithXs(rulesMessage);
+}
+
+void GameUIOutput::endGameScreen()
+{
+	cout << wrapWithXs(endGameMessage);
 }
 
 void GameUIOutput::nextPlayerWarningScreen()

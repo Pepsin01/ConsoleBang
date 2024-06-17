@@ -99,6 +99,8 @@ public:
     void discardCard(std::unique_ptr<Card> card);
 
     std::unique_ptr<Card> castDebuff(std::unique_ptr<Card> card);
+
+    int calculateDistance(int attackerIndex, int defenderIndex);
 };
 
 

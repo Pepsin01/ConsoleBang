@@ -92,7 +92,7 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 			for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
 			{
 				// If the card is shorter than the current line, fill with spaces
-				if (cardStrings[j].size() < i * CARD_WIDTH)
+				if (cardStrings[j].size() <= i * CARD_WIDTH)
 					result += string(CARD_WIDTH, ' ');
 				else
 					result += cardStrings[j].substr(i * CARD_WIDTH, CARD_WIDTH);

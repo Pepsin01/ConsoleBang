@@ -1,5 +1,6 @@
 #pragma once
 #include "../CoreModul/Card.hpp"
+#include "../CoreModul/Player.hpp"
 
 constexpr int CATBELOU_CARD_COUNT = 4;
 

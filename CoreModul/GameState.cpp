@@ -13,6 +13,7 @@ void GameStateControllor::mainGameLoop()
 			this->currentPlayerIndex = (this->currentPlayerIndex + 1) % this->players.size();
 		}
 	}
+	endGame();
 }
 
 bool GameStateControllor::isGameEnd()
@@ -130,6 +131,7 @@ void GameStateControllor::startGame()
 
 void GameStateControllor::endGame()
 {
+	this->uiOut.endGameScreen();
 }
 
 std::unique_ptr<Card> GameStateControllor::drawCard()
@@ -157,6 +159,14 @@ std::unique_ptr<Card> GameStateControllor::castDebuff(std::unique_ptr<Card> card
 
 	players[targetIndex]->receiveDebuff(move(card));
 	return nullptr;
+}
+
+int GameStateControllor::calculateDistance(int attackerIndex, int defenderIndex)
+{
+	int direct_distance = abs(attackerIndex - defenderIndex);
+	int wrapped_distance = players.size() - direct_distance;
+
+	return min(direct_distance, wrapped_distance) + getPlayer(defenderIndex)->calculateDistanceModifier();
 }
 
 void GameStateControllor::initializeDeck()

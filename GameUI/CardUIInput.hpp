@@ -12,5 +12,7 @@ class CardUIInput
 {
 public:
 	static int selectCastTarget(GameStateControllor& gameState, Card& card);
+	static int selectEquipmentCard(Player& player);
+	static bool fromHandOrEquipment();
 };
 

@@ -1,6 +1,8 @@
 #include "RemingtonCard.hpp"
 
 RemingtonCard::RemingtonCard(GameStateControllor& gameState, CardColor color) : 
-	WeaponCard(gameState, "Remington", "Remington - description", color, 3)
+	WeaponCard(gameState, "Remington (Weapon)",
+		"Extends range by 3. Only one weapon could be equipped at a time",
+		color, 3)
 {
 }

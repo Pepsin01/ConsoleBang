@@ -10,6 +10,7 @@ class GameUIOutput
 public:
 	void startGameScreen();
 	void gameRulesScreen();
+	void endGameScreen();
 	void nextPlayerWarningScreen();
 	static void renderScreen(const std::string& text);
 	GameUIOutput();
@@ -19,4 +20,5 @@ private:
 	const std::string beforeStartMessage;
 	const std::string rulesMessage;
 	const std::string nextPlayerWarningMessage;
+	const std::string endGameMessage;
 };

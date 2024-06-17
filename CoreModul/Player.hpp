@@ -12,11 +12,10 @@
 #include "../GameUI/GameUIOutput.hpp"
 #include "../GameUI/GameUIInput.hpp"
 
-//class GameStateControllor;  // Forward declaration
-
 class Player {
 private:
     int health;
+    bool bangPlayed;
 
     std::vector<std::unique_ptr<Card>> hand;
     std::vector<std::unique_ptr<Card>> equipment;
@@ -32,11 +31,17 @@ private:
     bool evaluatePrigione();
 
     std::string roleToString() const;
+    int getMaximumHealth() const;
+
+
 public:
     const PlayerRole role;
     int getHealth() const;
     int calculateRange() const;
+    int calculateRangeWithoutWeapon() const;
+    int calculateDistanceModifier() const;
     int getHandSize() const;
+    int getEquipmentSize() const;
     GameStateControllor& getGameState() const;
     bool isDead() const;
 
@@ -44,15 +49,16 @@ public:
     Player(GameStateControllor& gameState, PlayerRole role);
 
     void takeTurn();
-    void takeDamage(int damage);
+    void changeHealth(int damage);
     void showPublicProfile();
+    bool defendBangEffect();
+    bool returnFire();
+    bool tryPlayBang();
 
     std::unique_ptr<Card> handRandomCard();
     std::unique_ptr<Card> handEquipmentCard(int index);
     void receiveCard(std::unique_ptr<Card> card);
     void receiveDebuff(std::unique_ptr<Card> card);
     void discardCard(int index);
-
-
 };
 

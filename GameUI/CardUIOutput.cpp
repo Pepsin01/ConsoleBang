@@ -53,10 +53,10 @@ string CardUIOutput::render(Card& card)
 {
 	string result = string(CARD_WIDTH, '_');
 	result += "|" + string(CARD_WIDTH - 2, ' ') + "|";
-	result += "| Name: " + card.name + string(CARD_WIDTH - 9 - card.name.size(), ' ') + "|";
+	result += "| " + card.name + string(CARD_WIDTH - 3 - card.name.size(), ' ') + "|";
     result += "|" + string(CARD_WIDTH - 2, '-') + "|";
 
-    vector<string> descriptionLines = divideIntoLines("Description: " + card.description, CARD_WIDTH - 4);
+    vector<string> descriptionLines = divideIntoLines(card.description, CARD_WIDTH - 4);
     for (const string& line : descriptionLines) {
 		result += "| " + line + string(CARD_WIDTH - 3 - line.size(), ' ') + "|";
 	}
@@ -94,4 +94,14 @@ std::string CardUIOutput::sliceCard(const std::string& card)
 		result += card.substr(i * CARD_WIDTH, CARD_WIDTH) + '\n';
 	}
     return result;
+}
+
+void CardUIOutput::cannotBePlayed(const std::string& reason)
+{
+    GameUIOutput::renderScreen(
+		"You cannot play this card now!\n" +
+		reason +
+		"\nPress ENTER to continue.\n"
+	);
+    GameUIInput::waitForEnter();
 }
