@@ -20,7 +20,7 @@ OBJ_CARDS = $(SRC_CARDS:.cpp=.o)
 OBJ_GAMEUI = $(SRC_GAMEUI:.cpp=.o)
 
 # Executable name
-EXEC = myproject
+EXEC = ConsoleBang
 
 # Default target
 all: $(EXEC)
