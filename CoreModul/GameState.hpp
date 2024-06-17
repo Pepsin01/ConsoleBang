@@ -67,7 +67,7 @@ private:
     {
         for (int i = 0; i < count; i++)
         {
-            deck.push_back(make_unique<CardType>(gameState, colors.back()));
+            deck.push_back(std::make_unique<CardType>(gameState, colors.back()));
             colors.pop_back();
         }
     }
