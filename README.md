@@ -1,4 +1,16 @@
+# Console Bang! Card Game
 
+## Overview
+
+Console Bang! is a terminal-based card game inspired by the popular Bang! game. This project allows multiple players to engage in an interactive game session on a single computer. The game includes various modules handling game logic, player interactions, and game state management.
+
+## Features
+
+- **Multiplayer Support**: Multiple players can play the game on the same computer, taking turns as dictated by the game rules.
+- **Core Module**: Manages the state and flow of the game, including transitions between different game states and the effects of card plays.
+- **Player Module**: Handles player-specific information and actions, maintaining attributes such as health, role, and hand of cards.
+- **Card Module**: Implements various cards and their effects on the game state.
+- **Game UI Module**: Manages user interactions and display outputs, including input and output functionalities for both players and cards.
 
 ## How to Compile, Run, and Clean the Project
 

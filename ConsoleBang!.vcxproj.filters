@@ -236,7 +236,4 @@
       <Filter>Header Files\UIModul</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Specification.md" />
-  </ItemGroup>
 </Project>

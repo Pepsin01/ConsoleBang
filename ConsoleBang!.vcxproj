@@ -193,9 +193,6 @@
     <ClInclude Include="GameUI\PlayerUIInput.hpp" />
     <ClInclude Include="GameUI\PlayerUIOutput.hpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Specification.md" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
