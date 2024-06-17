@@ -7,6 +7,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 	int playerIndex = -1;
 	while (true)
 	{
+		// Give the player the information about the card they are casting
 		GameUIOutput::renderScreen(
 			"You are casting this card:\n" +
 			CardUIOutput::sliceCard(CardUIOutput::render(card)) + "\n"
@@ -16,6 +17,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 			"RETURN - Stops card from being casted.\n"
 		);
 
+		// Get the input from the player
 		string input;
 		getline(cin, input);
 		stringstream ss(input);
@@ -23,7 +25,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 		ss >> command;
 
 		if (command == "SHOW") {
-			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < gameState.playerCount()) {
+			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < gameState.playerCount()) { // Check if the player index is valid
 				gameState.getPlayer(playerIndex)->showPublicProfile();
 			}
 			else {
@@ -35,7 +37,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 			}
 		}
 		else if (command == "CAST") {
-			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < gameState.playerCount()) {
+			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < gameState.playerCount()) { // Check if the player index is valid
 				return playerIndex;
 			}
 			else {
@@ -47,7 +49,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 			}
 		}
 		else if (command == "RETURN") {
-			return -1;
+			return -1; // Return -1 to signal that the card should not be casted
 		}
 		else {
 			GameUIOutput::renderScreen(
@@ -65,6 +67,7 @@ int CardUIInput::selectEquipmentCard(Player& player)
 	int cardIndex = -1;
 	while (true)
 	{
+		// Give the player the information about the command they can use
 		GameUIOutput::renderScreen(
 			"Possible commands:\n"
 			"SHOW - Shows the equipment cards and health of the player.\n"
@@ -72,6 +75,7 @@ int CardUIInput::selectEquipmentCard(Player& player)
 			"RETURN - Stops card from being casted.\n"
 		);
 
+		// Get the input from the player
 		string input;
 		getline(cin, input);
 		stringstream ss(input);
@@ -82,7 +86,7 @@ int CardUIInput::selectEquipmentCard(Player& player)
 			player.showPublicProfile();
 		}
 		else if (command == "SELECT") {
-			if (ss >> cardIndex && cardIndex >= 0 && cardIndex < player.getEquipmentSize()) {
+			if (ss >> cardIndex && cardIndex >= 0 && cardIndex < player.getEquipmentSize()) { // Check if the card index is valid
 				return cardIndex;
 			}
 			else {
@@ -111,6 +115,7 @@ bool CardUIInput::fromHandOrEquipment()
 {
 	while (true)
 	{
+		// Give the player the information about the command they can use
 		GameUIOutput::renderScreen(
 			"From where do you want to take the player the card?\n"
 			"Possible commands:\n"
@@ -118,6 +123,7 @@ bool CardUIInput::fromHandOrEquipment()
 			"2. EQUIPMENT - Selects a card from players equipment.\n"
 		);
 
+		// Get the input from the player
 		string input;
 		getline(cin, input);
 		stringstream ss(input);
