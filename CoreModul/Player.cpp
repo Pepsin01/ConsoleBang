@@ -107,7 +107,7 @@ void Player::playCard(int cardIndex)
 
 			// if the debuff was not casted, return the card to the player's hand
 			if (result)
-				receiveCard(move(hand[cardIndex])); // return the card to the player's hand
+				receiveCard(move(result)); // return the card to the player's hand
 		}
 		else
 		{
