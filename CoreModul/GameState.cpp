@@ -125,30 +125,6 @@ GameStateController::GameStateController(GameUIOutput& uiOut, GameUIInput& uiIn,
 	}
 }
 
-std::vector<CardColor> GameStateController::generateDeckColors(int cardCount)
-{
-	const int iterations = cardCount / 4; 
-	vector<CardColor> colors;
-	for (int i = 0; i < iterations; i++)
-	{
-		colors.push_back(CardColor::HEARTS);
-		colors.push_back(CardColor::DIAMONDS);
-		colors.push_back(CardColor::CLUBS);
-		colors.push_back(CardColor::SPADES);
-	}
-
-	// If the number of cards is not divisible by 4, add the remaining colors
-	int rest = cardCount % 4;
-	if (rest > 0)
-		colors.push_back(CardColor::HEARTS);
-	if (rest > 1)
-		colors.push_back(CardColor::DIAMONDS);
-	if (rest > 2)
-		colors.push_back(CardColor::CLUBS);
-
-	return colors;
-}
-
 void GameStateController::startGame()
 {
 	this->uiOut.startGameScreen();
@@ -213,30 +189,42 @@ void GameStateController::initializeDeck()
 		WinchesterCard::WINCHESTER_CARD_COUNT;
 
 	// Generate colors for the deck
-	vector<CardColor> colors = generateDeckColors(totalCardCount);
+	auto getColor = [cardCount = totalCardCount, i = 0]() mutable -> CardColor {
+		if (i < cardCount) {
+			int setIndex = i % 4;
+			i++;
+			switch (setIndex) {
+			case 0: return CardColor::HEARTS;
+			case 1: return CardColor::DIAMONDS;
+			case 2: return CardColor::CLUBS;
+			case 3: return CardColor::SPADES;
+			}
+		}
+		return CardColor::HEARTS; // default return, should not reach here
+		};
 
 	// Add cards to the deck
-	addCardsToDeck<AppaloosaCard>(deck, *this, colors, AppaloosaCard::APPALOOSA_CARD_COUNT);
-	addCardsToDeck<BangCard>(deck, *this, colors, BangCard::BANG_CARD_COUNT);
-	addCardsToDeck<BarileCard>(deck, *this, colors, BarileCard::BARILE_CARD_COUNT);
-	addCardsToDeck<BirraCard>(deck, *this, colors, BirraCard::BIRRA_CARD_COUNT);
-	addCardsToDeck<CarabineCard>(deck, *this, colors, CarabineCard::CARABINE_CARD_COUNT);
-	addCardsToDeck<CatBelouCard>(deck, *this, colors, CatBelouCard::CATBELOU_CARD_COUNT);
-	addCardsToDeck<DiligenzaCard>(deck, *this, colors, DiligenzaCard::DILIGENZA_CARD_COUNT);
-	addCardsToDeck<DuelloCard>(deck, *this, colors, DuelloCard::DUELLO_CARD_COUNT);
-	addCardsToDeck<EmporioCard>(deck, *this, colors, EmporioCard::EMPORIO_CARD_COUNT);
-	addCardsToDeck<GatlingCard>(deck, *this, colors, GatlingCard::GATLING_CARD_COUNT);
-	addCardsToDeck<IndianiCard>(deck, *this, colors, IndianiCard::INDIANI_CARD_COUNT);
-	addCardsToDeck<MancatoCard>(deck, *this, colors, MancatoCard::MANCATO_CARD_COUNT);
-	addCardsToDeck<MustangCard>(deck, *this, colors, MustangCard::MUSTANG_CARD_COUNT);
-	addCardsToDeck<PanicoCard>(deck, *this, colors, PanicoCard::PANICO_CARD_COUNT);
-	addCardsToDeck<PrigioneCard>(deck, *this, colors, PrigioneCard::PRIGIONE_CARD_COUNT);
-	addCardsToDeck<RemingtonCard>(deck, *this, colors, RemingtonCard::REMINGTON_CARD_COUNT);
-	addCardsToDeck<SaloonCard>(deck, *this, colors, SaloonCard::SALOON_CARD_COUNT);
-	addCardsToDeck<SchofieldCard>(deck, *this, colors, SchofieldCard::SCHOFIELD_CARD_COUNT);
-	addCardsToDeck<VolcanicCard>(deck, *this, colors, VolcanicCard::VOLCANIC_CARD_COUNT);
-	addCardsToDeck<WellsFargoCard>(deck, *this, colors, WellsFargoCard::WELLS_FARGO_CARD_COUNT);
-	addCardsToDeck<WinchesterCard>(deck, *this, colors, WinchesterCard::WINCHESTER_CARD_COUNT);
+	addCardsToDeck<AppaloosaCard>(deck, *this, getColor, AppaloosaCard::APPALOOSA_CARD_COUNT);
+	addCardsToDeck<BangCard>(deck, *this, getColor, BangCard::BANG_CARD_COUNT);
+	addCardsToDeck<BarileCard>(deck, *this, getColor, BarileCard::BARILE_CARD_COUNT);
+	addCardsToDeck<BirraCard>(deck, *this, getColor, BirraCard::BIRRA_CARD_COUNT);
+	addCardsToDeck<CarabineCard>(deck, *this, getColor, CarabineCard::CARABINE_CARD_COUNT);
+	addCardsToDeck<CatBelouCard>(deck, *this, getColor, CatBelouCard::CATBELOU_CARD_COUNT);
+	addCardsToDeck<DiligenzaCard>(deck, *this, getColor, DiligenzaCard::DILIGENZA_CARD_COUNT);
+	addCardsToDeck<DuelloCard>(deck, *this, getColor, DuelloCard::DUELLO_CARD_COUNT);
+	addCardsToDeck<EmporioCard>(deck, *this, getColor, EmporioCard::EMPORIO_CARD_COUNT);
+	addCardsToDeck<GatlingCard>(deck, *this, getColor, GatlingCard::GATLING_CARD_COUNT);
+	addCardsToDeck<IndianiCard>(deck, *this, getColor, IndianiCard::INDIANI_CARD_COUNT);
+	addCardsToDeck<MancatoCard>(deck, *this, getColor, MancatoCard::MANCATO_CARD_COUNT);
+	addCardsToDeck<MustangCard>(deck, *this, getColor, MustangCard::MUSTANG_CARD_COUNT);
+	addCardsToDeck<PanicoCard>(deck, *this, getColor, PanicoCard::PANICO_CARD_COUNT);
+	addCardsToDeck<PrigioneCard>(deck, *this, getColor, PrigioneCard::PRIGIONE_CARD_COUNT);
+	addCardsToDeck<RemingtonCard>(deck, *this, getColor, RemingtonCard::REMINGTON_CARD_COUNT);
+	addCardsToDeck<SaloonCard>(deck, *this, getColor, SaloonCard::SALOON_CARD_COUNT);
+	addCardsToDeck<SchofieldCard>(deck, *this, getColor, SchofieldCard::SCHOFIELD_CARD_COUNT);
+	addCardsToDeck<VolcanicCard>(deck, *this, getColor, VolcanicCard::VOLCANIC_CARD_COUNT);
+	addCardsToDeck<WellsFargoCard>(deck, *this, getColor, WellsFargoCard::WELLS_FARGO_CARD_COUNT);
+	addCardsToDeck<WinchesterCard>(deck, *this, getColor, WinchesterCard::WINCHESTER_CARD_COUNT);
 
 	// Shuffle the deck
 	shuffle(deck.begin(), deck.end(), default_random_engine(static_cast<unsigned int>(time(nullptr))));
