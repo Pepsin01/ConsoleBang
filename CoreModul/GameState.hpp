@@ -43,11 +43,9 @@ class GameStateController {
     */
     GameStateController(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount);
 
-    void initializeDeck(); // Initialize the deck of cards
-
     void initializePlayers(int playerCount); // Initialize the players
 
-	static std::vector<CardColor> generateDeckColors(int cardCount); // Generate colors for the deck
+    void initializeDeck(); // Initialize the deck of cards
 
     /*
     * @brief Add cards to the deck
@@ -56,15 +54,15 @@ class GameStateController {
     * @param colors Colors to assign to the cards
     * @param count Number of cards to add
     */
-    template <typename CardType>
-    void addCardsToDeck(std::deque<std::unique_ptr<Card>>& deck, GameStateController& gameState, std::vector<CardColor>& colors, int count)
+    template <typename CardType, typename GetColor>
+    void addCardsToDeck(std::deque<std::unique_ptr<Card>>& deck, GameStateController& gameState, GetColor getColor, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            deck.push_back(std::make_unique<CardType>(gameState, colors.back()));
-            colors.pop_back();
+            deck.push_back(std::make_unique<CardType>(gameState, getColor()));
         }
     }
+
 
     void mainGameLoop(); // Main game loop
 

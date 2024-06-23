@@ -37,8 +37,8 @@ protected:
 		CardColor color
 	) : gameState(gameState), name(name), description(description), color(color) {}
 public:
-	const std::string& name;
-	const std::string& description;
+	const std::string name;
+	const std::string description;
 	const CardColor color;
 
 	virtual ~Card() = default;

@@ -5,6 +5,12 @@ using namespace std;
 int CardUIInput::selectCastTarget(GameStateController& gameState, Card& card)
 {
 	int playerIndex = -1;
+
+	auto renderError = [](const std::string& message) {
+		GameUIOutput::renderScreen(message + "\n\nPress ENTER to continue.\n");
+		GameUIInput::waitForEnter();
+		};
+
 	while (true)
 	{
 		// Give the player the information about the card they are casting
@@ -29,32 +35,20 @@ int CardUIInput::selectCastTarget(GameStateController& gameState, Card& card)
 				gameState.getPlayer(playerIndex)->showPublicProfile();
 			}
 			else {
-				GameUIOutput::renderScreen(
-					"Invalid command format for SHOW.\n\n"
-					"Press ENTER to continue.\n"
-				);
-				GameUIInput::waitForEnter();
+				renderError("Invalid command format for SHOW.");
 			}
 		}
 		else if (command == "CAST") {
 			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < static_cast<int>(gameState.playerCount())) { // Check if the player index is valid
 				return playerIndex;
 			}
-			GameUIOutput::renderScreen(
-				"Invalid command format for CAST.\n\n"
-				"Press ENTER to continue.\n"
-			);
-			GameUIInput::waitForEnter();
+			renderError("Invalid command format for CAST.");
 		}
 		else if (command == "RETURN") {
 			return -1; // Return -1 to signal that the card should not be casted
 		}
 		else {
-			GameUIOutput::renderScreen(
-				"Invalid command.\n\n"
-				"Press ENTER to continue.\n"
-			);
-			GameUIInput::waitForEnter();
+			renderError("Invalid command.");
 		}
 	}
 }

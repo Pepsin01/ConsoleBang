@@ -4,6 +4,11 @@ using namespace std;
 
 bool PlayerUIInput::parseCommand(Player& player) {
 
+    auto renderError = [](const std::string& message) {
+        GameUIOutput::renderScreen(message + "\n\nPress ENTER to continue.\n");
+        GameUIInput::waitForEnter();
+        };
+
     // Display the possible commands
     cout <<
         "Possible commands:\n"
@@ -25,11 +30,7 @@ bool PlayerUIInput::parseCommand(Player& player) {
             player.playCard(cardIndex);
         }
         else {
-            GameUIOutput::renderScreen(
-                "Invalid command format for PLAY.\n\n"
-                "Press ENTER to continue.\n"
-            );
-            GameUIInput::waitForEnter();
+            renderError("Invalid command format for PLAY.");
         }
     }
     else if (command == "DISCARD") {
@@ -38,11 +39,7 @@ bool PlayerUIInput::parseCommand(Player& player) {
             player.discardCard(cardIndex);
         }
         else {
-            GameUIOutput::renderScreen(
-                "Invalid command format for DISCARD.\n\n"
-                "Press ENTER to continue.\n"
-            );
-            GameUIInput::waitForEnter();
+            renderError("Invalid command format for DISCARD.");
         }
     }
     else if (command == "END") {
@@ -50,11 +47,7 @@ bool PlayerUIInput::parseCommand(Player& player) {
 			return true;
 		}
 		else {
-            GameUIOutput::renderScreen(
-                "You have more cards in your hand than is the number of your current health.\n\n"
-                "Press ENTER to continue.\n"
-            );
-            GameUIInput::waitForEnter();
+            renderError("You have more cards in your hand than is the number of your current health.");
 		}
     }
     else if (command == "SHOW") {
@@ -65,26 +58,15 @@ bool PlayerUIInput::parseCommand(Player& player) {
 				p->showPublicProfile();
 			}
 			else {
-				GameUIOutput::renderScreen(
-					"Player with given index does not exist.\n\n"
-					"Press ENTER to continue.\n"
-				);
-				GameUIInput::waitForEnter();
+				renderError("Player with given index does not exist.");
 			}
         }
         else {
-            GameUIOutput::renderScreen(
-                "Invalid command format for SHOW.\n\n"
-                "Press ENTER to continue.\n"
-            );
+            renderError("Invalid command format for SHOW.");
         }
     }
     else {
-        GameUIOutput::renderScreen(
-            "Unknown command.\n"
-            "Press ENTER to continue.\n"
-        );
-        GameUIInput::waitForEnter();
+        renderError("Invalid command.");
     }
     return false;
 }
