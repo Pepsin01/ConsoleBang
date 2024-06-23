@@ -1,5 +1,6 @@
 #include "GameUIInput.hpp"
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
