@@ -7,7 +7,7 @@ constexpr int BIRRA_CARD_COUNT = 6;
 class BirraCard : public PlayableCard
 {
 public:
-	BirraCard(GameStateControllor& gameState, CardColor color);
+	BirraCard(GameStateController& gameState, CardColor color);
 	bool execute(Player& player) override;
 };
 

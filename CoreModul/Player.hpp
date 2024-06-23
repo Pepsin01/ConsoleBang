@@ -24,7 +24,7 @@ private:
     std::vector<std::unique_ptr<Card>> hand; // Player's hand
     std::vector<std::unique_ptr<Card>> equipment; // Player's equipment
 
-    GameStateControllor& gameState; // Reference to the game state
+    GameStateController& gameState; // Reference to the game state
 
     void showPrivateProfile(); // Triggers the private profile screen rendering
 
@@ -83,7 +83,7 @@ public:
     /*
     * @return Returns reference to the game state controller that the player is in
     */
-    GameStateControllor& getGameState() const;
+    GameStateController& getGameState() const;
 
     /*
     * @brief Checks if the player is dead
@@ -102,7 +102,7 @@ public:
     * @param gameState Reference to the game state controller
     * @param role Player's role
 	*/
-    Player(GameStateControllor& gameState, PlayerRole role);
+    Player(GameStateController& gameState, PlayerRole role);
 
     /*
     * @brief Starts the player's turn loop

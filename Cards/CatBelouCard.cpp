@@ -2,7 +2,7 @@
 
 using namespace std;
 
-CatBelouCard::CatBelouCard(GameStateControllor& gameState, CardColor color) :
+CatBelouCard::CatBelouCard(GameStateController& gameState, CardColor color) :
 	PlayableCard(gameState, "Cat Belou (Playable)", "Discard random card from target players hand or choose one from his equipment", color)
 {
 }

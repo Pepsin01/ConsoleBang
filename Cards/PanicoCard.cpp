@@ -2,7 +2,7 @@
 
 using namespace std;
 
-PanicoCard::PanicoCard(GameStateControllor& gameState, CardColor color) : 
+PanicoCard::PanicoCard(GameStateController& gameState, CardColor color) : 
 	PlayableCard(gameState, "Panico (Playable)", 
 		"Take random card from another player hand or choose one from his equipment. " 
 		"This card has range of 1."

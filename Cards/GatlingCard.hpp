@@ -7,7 +7,7 @@ constexpr int GATLING_CARD_COUNT = 1;
 class GatlingCard : public PlayableCard
 {
 public:
-	GatlingCard(GameStateControllor& gameState, CardColor color);
+	GatlingCard(GameStateController& gameState, CardColor color);
 	bool execute(Player& player) override;
 };
 

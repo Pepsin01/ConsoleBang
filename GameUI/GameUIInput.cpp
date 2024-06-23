@@ -18,7 +18,7 @@ int GameUIInput::getPlayerCount()
         if (cin.fail() || number < 3 || number > 7) {
             cin.clear(); // Clear the error flag
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-            cout << "Not a valid number of players, insert number between 3-7 please" << endl;
+            cout << "Not a valid number of players, insert number between 3-7 please" << '\n';
         }
         else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');

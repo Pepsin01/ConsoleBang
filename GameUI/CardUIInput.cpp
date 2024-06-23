@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
+int CardUIInput::selectCastTarget(GameStateController& gameState, Card& card)
 {
 	int playerIndex = -1;
 	while (true)
@@ -25,7 +25,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 		ss >> command;
 
 		if (command == "SHOW") {
-			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < gameState.playerCount()) { // Check if the player index is valid
+			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < static_cast<int>(gameState.playerCount())) { // Check if the player index is valid
 				gameState.getPlayer(playerIndex)->showPublicProfile();
 			}
 			else {
@@ -37,7 +37,7 @@ int CardUIInput::selectCastTarget(GameStateControllor& gameState, Card& card)
 			}
 		}
 		else if (command == "CAST") {
-			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < gameState.playerCount()) { // Check if the player index is valid
+			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < static_cast<int>(gameState.playerCount())) { // Check if the player index is valid
 				return playerIndex;
 			}
 			else {

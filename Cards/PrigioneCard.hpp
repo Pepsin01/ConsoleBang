@@ -6,6 +6,6 @@ constexpr int PRIGIONE_CARD_COUNT = 3;
 class PrigioneCard : public DebuffCard
 {
 public:
-	PrigioneCard(GameStateControllor& gameState, CardColor color);
+	PrigioneCard(GameStateController& gameState, CardColor color);
 };
 

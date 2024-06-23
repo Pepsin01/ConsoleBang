@@ -1,6 +1,6 @@
 #include "BirraCard.hpp"
 
-BirraCard::BirraCard(GameStateControllor& gameState, CardColor color) : 
+BirraCard::BirraCard(GameStateController& gameState, CardColor color) : 
 	PlayableCard(gameState, "Birra (Playable)", "Heals you by 1", color)
 {}
 

@@ -20,7 +20,7 @@ public:
 	* @param card Card that is being played
 	* @return Index of the player that is selected as a target
 	*/
-	static int selectCastTarget(GameStateControllor& gameState, Card& card);
+	static int selectCastTarget(GameStateController& gameState, Card& card);
 	/*
 	* @brief Asks the player to select a card from their hand.
 	* @param player Player that is currently playing

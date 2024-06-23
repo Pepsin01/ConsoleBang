@@ -1,4 +1,25 @@
 #include "Player.hpp"
+#include "../Cards/AppaloosaCard.hpp"
+#include "../Cards/BangCard.hpp"
+#include "../Cards/BarileCard.hpp"
+#include "../Cards/BirraCard.hpp"
+#include "../Cards/CatBelouCard.hpp"
+#include "../Cards/CarabineCard.hpp"
+#include "../Cards/DiligenzaCard.hpp"
+#include "../Cards/DuelloCard.hpp"
+#include "../Cards/EmporioCard.hpp"
+#include "../Cards/GatlingCard.hpp"
+#include "../Cards/IndianiCard.hpp"
+#include "../Cards/MancatoCard.hpp"
+#include "../Cards/MustangCard.hpp"
+#include "../Cards/PanicoCard.hpp"
+#include "../Cards/PrigioneCard.hpp"
+#include "../Cards/RemingtonCard.hpp"
+#include "../Cards/SaloonCard.hpp"
+#include "../Cards/SchofieldCard.hpp"
+#include "../Cards/VolcanicCard.hpp"
+#include "../Cards/WellsFargoCard.hpp"
+#include "../Cards/WinchesterCard.hpp"
 using namespace std;
 
 int Player::calculateRange() const
@@ -50,7 +71,7 @@ int Player::calculateDistanceModifier() const
 
 int Player::getHandSize() const
 {
-	return hand.size();
+	return static_cast<int>(hand.size());
 }
 
 int Player::getEquipmentSize() const
@@ -58,7 +79,7 @@ int Player::getEquipmentSize() const
 	return equipment.size();
 }
 
-GameStateControllor& Player::getGameState() const
+GameStateController& Player::getGameState() const
 {
 	return gameState;
 }
@@ -71,15 +92,15 @@ bool Player::isDead() const
 void Player::playCard(int cardIndex)
 {
 	// if the card is a blue card
-	if (BlueCard* blueCard = dynamic_cast<BlueCard*>(hand[cardIndex].get()))
+	if (dynamic_cast<BlueCard*>(hand[cardIndex].get()))
 	{
 		// if the card is a weapon card
-		if (WeaponCard* weapon = dynamic_cast<WeaponCard*>(hand[cardIndex].get())) {
+		if (dynamic_cast<WeaponCard*>(hand[cardIndex].get())) {
 			replaceWeapon(move(hand[cardIndex]));
 			hand.erase(hand.begin() + cardIndex); // remove the card from the player's hand
 		}
 		// if the card is a debuff card
-		else if (DebuffCard* debuff = dynamic_cast<DebuffCard*>(hand[cardIndex].get()))
+		else if (dynamic_cast<DebuffCard*>(hand[cardIndex].get()))
 		{
 			auto result = gameState.castDebuff(move(hand[cardIndex])); // cast the debuff
 			hand.erase(hand.begin() + cardIndex); // remove the card from the player's hand
@@ -107,7 +128,7 @@ void Player::playCard(int cardIndex)
 		PlayerUIOutput::cannotPlayCardScreen(*hand[cardIndex]);
 }
 
-Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), gameState(gameState)
+Player::Player(GameStateController& gameState, PlayerRole role) : bangPlayed(false), gameState(gameState), role(role)
 {
 	// initialize the player's health
 	if (role == SHERIF)
@@ -116,7 +137,7 @@ Player::Player(GameStateControllor& gameState, PlayerRole role) : role(role), ga
 		health = 4;
 
 	// draw as many cards as the player's health
-	for (size_t i = 0; i < health; i++)
+	for (int i = 0; i < health; i++)
 	{
 		hand.push_back(gameState.drawCard());
 	}
@@ -172,7 +193,7 @@ void Player::replaceWeapon(std::unique_ptr<Card> card)
 	for (size_t i = 0; i < equipment.size(); i++)
 	{
 		// if there is a weapon card in the equipment
-		if (WeaponCard* weapon = dynamic_cast<WeaponCard*>(equipment[i].get()))
+		if (dynamic_cast<WeaponCard*>(equipment[i].get()))
 		{
 			gameState.discardCard(move(equipment[i])); // discard the previous weapon card
 			equipment.erase(equipment.begin() + i); // remove the previous weapon card from the equipment

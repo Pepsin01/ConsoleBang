@@ -6,6 +6,6 @@ constexpr int MANCATO_CARD_COUNT = 12;
 class MancatoCard : public ReactionCard
 {
 public:
-	MancatoCard(GameStateControllor& gameState, CardColor color);
+	MancatoCard(GameStateController& gameState, CardColor color);
 };
 

@@ -2,13 +2,13 @@
 
 using namespace std;
 
-IndianiCard::IndianiCard(GameStateControllor& gameState, CardColor color) :
+IndianiCard::IndianiCard(GameStateController& gameState, CardColor color) :
 	PlayableCard(gameState, "Indiani (Playable)", "Every other player that doesn't return fire with Bang! looses 1 health", color)
 {}
 
 bool IndianiCard::execute(Player & player)
 {
-	for (size_t i = 0; i < gameState.playerCount(); i++)
+	for (int i = 0; i < static_cast<int>(gameState.playerCount()); i++)
 	{
 		if (i == gameState.getCurrentPlayerIndex())
 			continue;

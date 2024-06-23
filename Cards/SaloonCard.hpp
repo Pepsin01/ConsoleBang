@@ -7,7 +7,7 @@ constexpr int SALOON_CARD_COUNT = 1;
 class SaloonCard : public PlayableCard
 {
 public:
-	SaloonCard(GameStateControllor& gameState, CardColor color);
+	SaloonCard(GameStateController& gameState, CardColor color);
 	bool execute(Player& player) override;
 };
 

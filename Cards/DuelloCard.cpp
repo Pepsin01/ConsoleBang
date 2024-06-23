@@ -2,7 +2,7 @@
 
 using namespace std;
 
-DuelloCard::DuelloCard(GameStateControllor& gameState, CardColor color) :
+DuelloCard::DuelloCard(GameStateController& gameState, CardColor color) :
 	PlayableCard(gameState, "Duello (Playable)",
 		"Target player must return fire, then you must return fire and etc."
 		"The last one who doesn't return fire looses 1 health",

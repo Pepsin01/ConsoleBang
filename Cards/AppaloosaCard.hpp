@@ -6,6 +6,6 @@ constexpr int APPALOOSA_CARD_COUNT = 1;
 class AppaloosaCard : public virtual BlueCard
 {
 	public:
-		AppaloosaCard(GameStateControllor& gameState, CardColor color);
+		AppaloosaCard(GameStateController& gameState, CardColor color);
 };
 

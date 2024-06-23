@@ -7,7 +7,7 @@ constexpr int CATBELOU_CARD_COUNT = 4;
 class CatBelouCard : public PlayableCard
 {
 public:
-	CatBelouCard(GameStateControllor& gameState, CardColor color);
+	CatBelouCard(GameStateController& gameState, CardColor color);
 	bool execute(Player& player) override;
 };
 

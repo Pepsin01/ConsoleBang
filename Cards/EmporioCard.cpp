@@ -2,7 +2,7 @@
 
 using namespace std;
 
-EmporioCard::EmporioCard(GameStateControllor& gameState, CardColor color) : 
+EmporioCard::EmporioCard(GameStateController& gameState, CardColor color) : 
 	PlayableCard(gameState, "Emporio (Playable)", "Draws and gives a card to each player", color)
 {}
 

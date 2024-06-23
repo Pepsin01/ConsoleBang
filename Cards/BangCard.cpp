@@ -2,7 +2,7 @@
 
 using namespace std;
 
-BangCard::BangCard(GameStateControllor& gameState, CardColor color) : 
+BangCard::BangCard(GameStateController& gameState, CardColor color) : 
 	PlayableCard(gameState, "Bang (Playable)", "Applies a bang effect on chosen player", color)
 {}
 

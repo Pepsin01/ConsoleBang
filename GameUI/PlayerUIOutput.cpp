@@ -66,9 +66,9 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 	int tallestCard = 0;
 	for (size_t i = 0; i < cards.size(); i++)
 	{
-		if (cardStrings[i].size() > tallestCard)
+		if (static_cast<int>(cardStrings[i].size()) > tallestCard)
 		{
-			tallestCard = cardStrings[i].size();
+			tallestCard = static_cast<int>(cardStrings[i].size());
 		}
 	}
 	tallestCard /= CARD_WIDTH; // Divide by the width to get number lines in a card
@@ -77,7 +77,7 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 	int cardsRendered = 0; // Number of cards rendered so far
 
 	// Render the cards side by side
-	while (cardsRendered < cards.size())
+	while (cardsRendered < static_cast<int>(cards.size()))
 	{
 		// Render the slot numbers for each card
 		for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
@@ -92,7 +92,7 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 			for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
 			{
 				// If the card is shorter than the current line, fill with spaces
-				if (cardStrings[j].size() <= i * CARD_WIDTH)
+				if (static_cast<int>(cardStrings[j].size()) <= i * CARD_WIDTH)
 					result += string(CARD_WIDTH, ' ');
 				else
 					result += cardStrings[j].substr(i * CARD_WIDTH, CARD_WIDTH);

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-WellsFargoCard::WellsFargoCard(GameStateControllor& gameState, CardColor color) :
+WellsFargoCard::WellsFargoCard(GameStateController& gameState, CardColor color) :
 	PlayableCard(gameState, "Wells Fargo (Playable)", "Play this card and instantly draw three new cards.", color)
 {}
 

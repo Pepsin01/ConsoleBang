@@ -6,6 +6,6 @@ constexpr int WINCHESTER_CARD_COUNT = 1;
 class WinchesterCard : public WeaponCard
 {
 public:
-	WinchesterCard(GameStateControllor& gameState, CardColor color);
+	WinchesterCard(GameStateController& gameState, CardColor color);
 };
 

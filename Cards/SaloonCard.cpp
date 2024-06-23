@@ -1,6 +1,6 @@
 #include "SaloonCard.hpp"
 
-SaloonCard::SaloonCard(GameStateControllor& gameState, CardColor color) :
+SaloonCard::SaloonCard(GameStateController& gameState, CardColor color) :
 	PlayableCard(gameState, "Saloon (Playable)", "Heals every player by 1", color)
 {
 }

@@ -6,6 +6,6 @@ constexpr int VOLCANIC_CARD_COUNT = 2;
 class VolcanicCard : public WeaponCard
 {
 public:
-	VolcanicCard(GameStateControllor& gameState, CardColor color);
+	VolcanicCard(GameStateController& gameState, CardColor color);
 };
 

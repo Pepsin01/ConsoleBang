@@ -1,15 +1,42 @@
 #include "GameState.hpp"
+#include <algorithm>
+#include <random>
+#include <ctime>
+#include "../GameUI/CardUIInput.hpp"
+#include "PlayerRole.hpp"
+#include "../Cards/AppaloosaCard.hpp"
+#include "../Cards/BangCard.hpp"
+#include "../Cards/BarileCard.hpp"
+#include "../Cards/BirraCard.hpp"
+#include "../Cards/CatBelouCard.hpp"
+#include "../Cards/CarabineCard.hpp"
+#include "../Cards/DiligenzaCard.hpp"
+#include "../Cards/DuelloCard.hpp"
+#include "../Cards/EmporioCard.hpp"
+#include "../Cards/GatlingCard.hpp"
+#include "../Cards/IndianiCard.hpp"
+#include "../Cards/MancatoCard.hpp"
+#include "../Cards/MustangCard.hpp"
+#include "../Cards/PanicoCard.hpp"
+#include "../Cards/PrigioneCard.hpp"
+#include "../Cards/RemingtonCard.hpp"
+#include "../Cards/SaloonCard.hpp"
+#include "../Cards/SchofieldCard.hpp"
+#include "../Cards/VolcanicCard.hpp"
+#include "../Cards/WellsFargoCard.hpp"
+#include "../Cards/WinchesterCard.hpp"
+
 using namespace std;
 
-void GameStateControllor::mainGameLoop()
+void GameStateController::mainGameLoop()
 {
 	// Main game loop
 	while (!isGameEnd())
 	{
 		this->uiOut.nextPlayerWarningScreen();
-		if (this->uiIn.waitForEnter())
+		if (GameUIInput::waitForEnter())
 		{
-			shared_ptr<Player> currentPlayer = this->players[this->currentPlayerIndex]; // Get the current player
+			const shared_ptr<Player> currentPlayer = this->players[this->currentPlayerIndex]; // Get the current player
 			currentPlayer->takeTurn(); // Let the current player take a turn
 			this->currentPlayerIndex = (this->currentPlayerIndex + 1) % this->players.size(); // Move to the next player
 		}
@@ -17,7 +44,7 @@ void GameStateControllor::mainGameLoop()
 	endGame();
 }
 
-bool GameStateControllor::isGameEnd()
+bool GameStateController::isGameEnd() const
 {
 	if (isSherifDead()) // Check if the sherif is dead
 		return true;
@@ -26,9 +53,9 @@ bool GameStateControllor::isGameEnd()
 	return false;
 }
 
-bool GameStateControllor::isSherifDead()
+bool GameStateController::isSherifDead() const
 {
-	for (shared_ptr<Player> player : this->players)
+	for (const shared_ptr<Player>& player : this->players)
 	{
 		if (player->role == PlayerRole::SHERIF && player->getHealth() <= 0)
 			return true;
@@ -36,11 +63,11 @@ bool GameStateControllor::isSherifDead()
 	return false;
 }
 
-bool GameStateControllor::areBanditsDead()
+bool GameStateController::areBanditsDead() const
 {
 	int banditCount = 0;
 	int deadBanditCount = 0;
-	for (shared_ptr<Player> player : this->players)
+	for (const shared_ptr<Player>& player : this->players)
 	{
 		if (player->role == PlayerRole::BANDIT)
 		{
@@ -52,35 +79,35 @@ bool GameStateControllor::areBanditsDead()
 	return deadBanditCount == banditCount;
 }
 
-GameStateControllor& GameStateControllor::getInstance(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount)
+GameStateController& GameStateController::getInstance(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount)
 {
-	static GameStateControllor instance(uiOut, uiIn, playerCount);
+	static GameStateController instance(uiOut, uiIn, playerCount);
 	return instance;
 }
 
-GameState GameStateControllor::getCurrentState() const
+GameState GameStateController::getCurrentState() const
 {
 	return this->currentState;
 }
 
-shared_ptr<Player> GameStateControllor::getPlayer(int index)
+shared_ptr<Player> GameStateController::getPlayer(int index)
 {
-	if (index < 0 || index >= this->players.size())
+	if (index < 0 || index >= static_cast<int>(this->players.size()))
 		return nullptr;
 	return this->players[index];
 }
 
-size_t GameStateControllor::playerCount()
+size_t GameStateController::playerCount() const
 {
 	return this->players.size();
 }
 
-int GameStateControllor::getCurrentPlayerIndex() const
+int GameStateController::getCurrentPlayerIndex() const
 {
 	return this->currentPlayerIndex;
 }
 
-GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount) : uiOut(uiOut), uiIn(uiIn)
+GameStateController::GameStateController(GameUIOutput& uiOut, GameUIInput& uiIn, int playerCount) : uiOut(uiOut), uiIn(uiIn)
 {
 	initializeDeck(); // Initializes all cards that will be used in the game
 	initializePlayers(playerCount);
@@ -98,9 +125,9 @@ GameStateControllor::GameStateControllor(GameUIOutput& uiOut, GameUIInput& uiIn,
 	}
 }
 
-std::vector<CardColor> GameStateControllor::generateDeckColors(int cardCount)
+std::vector<CardColor> GameStateController::generateDeckColors(int cardCount)
 {
-	int iterations = cardCount / 4; 
+	const int iterations = cardCount / 4; 
 	vector<CardColor> colors;
 	for (int i = 0; i < iterations; i++)
 	{
@@ -122,22 +149,22 @@ std::vector<CardColor> GameStateControllor::generateDeckColors(int cardCount)
 	return colors;
 }
 
-void GameStateControllor::startGame()
+void GameStateController::startGame()
 {
 	this->uiOut.startGameScreen();
-	if (this->uiIn.waitForEnter())
+	if (GameUIInput::waitForEnter())
 		this->uiOut.gameRulesScreen();
 
-	if (this->uiIn.waitForEnter())
+	if (GameUIInput::waitForEnter())
 		mainGameLoop();
 }
 
-void GameStateControllor::endGame()
+void GameStateController::endGame() const
 {
 	this->uiOut.endGameScreen();
 }
 
-std::unique_ptr<Card> GameStateControllor::drawCard()
+std::unique_ptr<Card> GameStateController::drawCard()
 {
 	if (deck.empty())
 		return nullptr;
@@ -147,12 +174,12 @@ std::unique_ptr<Card> GameStateControllor::drawCard()
 	return card;
 }
 
-void GameStateControllor::discardCard(std::unique_ptr<Card> card)
+void GameStateController::discardCard(std::unique_ptr<Card> card)
 {
 	deck.push_back(move(card));
 }
 
-std::unique_ptr<Card> GameStateControllor::castDebuff(std::unique_ptr<Card> card)
+std::unique_ptr<Card> GameStateController::castDebuff(std::unique_ptr<Card> card)
 {
 	int targetIndex = CardUIInput::selectCastTarget(*this, *card);
 	
@@ -164,15 +191,15 @@ std::unique_ptr<Card> GameStateControllor::castDebuff(std::unique_ptr<Card> card
 	return nullptr;
 }
 
-int GameStateControllor::calculateDistance(int attackerIndex, int defenderIndex)
+int GameStateController::calculateDistance(int attackerIndex, int defenderIndex)
 {
 	int direct_distance = abs(attackerIndex - defenderIndex); // Direct distance between the attacker and the defender
-	int wrapped_distance = players.size() - direct_distance; // Complementary distance if we assume the end of the vector is connected to the beginning
+	int wrapped_distance = static_cast<int>(players.size()) - direct_distance; // Complementary distance if we assume the end of the vector is connected to the beginning
 
 	return min(direct_distance, wrapped_distance) + getPlayer(defenderIndex)->calculateDistanceModifier(); // Return the minimum distance plus the distance modifier of the defender
 }
 
-void GameStateControllor::initializeDeck()
+void GameStateController::initializeDeck()
 {
 	// Constants for the number of cards in the deck
 	int totalCardCount = APPALOOSA_CARD_COUNT + BANG_CARD_COUNT + BARILE_CARD_COUNT + BIRRA_CARD_COUNT + CARABINE_CARD_COUNT +
@@ -208,17 +235,17 @@ void GameStateControllor::initializeDeck()
 	addCardsToDeck<WinchesterCard>(deck, *this, colors, WINCHESTER_CARD_COUNT);
 
 	// Shuffle the deck
-	shuffle(begin(deck), end(deck), default_random_engine{ static_cast<unsigned int>(time(nullptr)) });
+	shuffle(deck.begin(), deck.end(), default_random_engine(static_cast<unsigned int>(time(nullptr))));
 }
 
-void GameStateControllor::initializePlayers(int playerCount)
+void GameStateController::initializePlayers(const int playerCount)
 {
 	players = vector<shared_ptr<Player>>(playerCount);
 
 	// Randomize player roles
 	PlayerRoleRandomizer prr = PlayerRoleRandomizer(playerCount);
 
-	for (size_t i = 0; i < playerCount; i++)
+	for (int i = 0; i < playerCount; i++)
 	{
 		players[i] = make_shared<Player>(*this, prr.getNextRole());
 	}

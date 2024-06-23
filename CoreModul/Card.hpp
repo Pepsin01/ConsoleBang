@@ -3,10 +3,13 @@
 //#include "GameState.hpp"
 //#include "Player.hpp"
 
+
+
+
 #include <string>
 #include <memory>
 
-class GameStateControllor;  // Forward declaration
+class GameStateController;  // Forward declaration
 class Player;  // Forward declaration
 
 /*
@@ -25,10 +28,10 @@ enum CardColor
 */
 class Card {
 protected:
-	GameStateControllor& gameState;
+	GameStateController& gameState;
 
 	Card(
-		GameStateControllor& gameState,
+		GameStateController& gameState,
 		const std::string name,
 		const std::string description,
 		CardColor color
@@ -48,7 +51,7 @@ public:
 class PlayableCard : public Card {
 protected:
 	PlayableCard(
-		GameStateControllor& gameState,
+		GameStateController& gameState,
 		const std::string name,
 		const std::string description,
 		CardColor color
@@ -65,7 +68,7 @@ public:
 class ReactionCard : public Card {
 protected:
 	ReactionCard(
-		GameStateControllor& gameState,
+		GameStateController& gameState,
 		const std::string name,
 		const std::string description,
 		CardColor color
@@ -80,7 +83,7 @@ public:
 class BlueCard : public Card {
 protected:
 	BlueCard(
-		GameStateControllor& gameState,
+		GameStateController& gameState,
 		const std::string name,
 		const std::string description, 
 		CardColor color
@@ -95,7 +98,7 @@ public:
 class DebuffCard : public BlueCard {
 protected:
 	DebuffCard(
-		GameStateControllor& gameState,
+		GameStateController& gameState,
 		const std::string name,
 		const std::string description,
 		CardColor color
@@ -110,7 +113,7 @@ public:
 class WeaponCard : public BlueCard {
 protected:
 	WeaponCard(
-		GameStateControllor& gameState,
+		GameStateController& gameState,
 		const std::string name,
 		const std::string description,
 		CardColor color,

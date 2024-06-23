@@ -1,8 +1,5 @@
 #pragma once
 #include <vector>
-#include <algorithm>
-#include <random>
-#include <ctime>
 
 enum PlayerRole
 {
@@ -17,9 +14,7 @@ enum PlayerRole
 */
 class PlayerRoleRandomizer
 {
-private:
-	std::vector<PlayerRole> roles;
-    int totalPlayers;
+	std::vector<PlayerRole> roles_;
 public:
     /*
     * @brief Constructor

@@ -6,6 +6,6 @@ constexpr int CARABINE_CARD_COUNT = 1;
 class CarabineCard : public WeaponCard
 {
 public:
-	CarabineCard(GameStateControllor& gameState, CardColor color);
+	CarabineCard(GameStateController& gameState, CardColor color);
 };
 

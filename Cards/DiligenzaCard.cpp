@@ -2,7 +2,7 @@
 
 using namespace std;
 
-DiligenzaCard::DiligenzaCard(GameStateControllor& gameState, CardColor color) :
+DiligenzaCard::DiligenzaCard(GameStateController& gameState, CardColor color) :
 	PlayableCard(gameState, "Diligenza (Playable)", "Play this card and instantly draw two new cards.", color)
 {
 }

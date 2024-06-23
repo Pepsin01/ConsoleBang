@@ -2,13 +2,13 @@
 
 using namespace std;
 
-GatlingCard::GatlingCard(GameStateControllor& gameState, CardColor color) : 
+GatlingCard::GatlingCard(GameStateController& gameState, CardColor color) : 
 	PlayableCard(gameState, "Gatling (Playable)", "Applies bang effect on all the other players", color)
 {}
 
 bool GatlingCard::execute(Player & player)
 {
-	for (size_t i = 0; i < gameState.playerCount(); i++)
+	for (int i = 0; i < static_cast<int>(gameState.playerCount()); i++)
 	{
 		if (i == gameState.getCurrentPlayerIndex())
 			continue;

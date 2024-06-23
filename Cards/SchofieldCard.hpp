@@ -6,6 +6,6 @@ constexpr int SCHOFIELD_CARD_COUNT = 3;
 class SchofieldCard : public WeaponCard
 {
 public:
-	SchofieldCard(GameStateControllor& gameState, CardColor color);
+	SchofieldCard(GameStateController& gameState, CardColor color);
 };
 

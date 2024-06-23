@@ -11,9 +11,9 @@ vector<string> CardUIOutput::divideIntoLines(const string& text, int lineLength)
 
     while (iss >> word) {
         // Check if adding the word would exceed the line length
-        if (currentLine.length() + word.length() + 1 > lineLength) {
+        if (static_cast<int>(currentLine.length() + word.length()) + 1 > lineLength) {
             // If the word itself is longer than the line length, split it
-            while (word.length() > lineLength) {
+            while (static_cast<int>(word.length()) > lineLength) {
                 currentLine = word.substr(0, lineLength - 1) + "-";
                 result.push_back(currentLine);
                 word = word.substr(lineLength - 1);
@@ -35,7 +35,7 @@ vector<string> CardUIOutput::divideIntoLines(const string& text, int lineLength)
         }
 
         // If the current line is exactly the line length, move to next line
-        if (currentLine.length() == lineLength) {
+        if (static_cast<int>(currentLine.length()) == lineLength) {
             result.push_back(currentLine);
             currentLine.clear();
         }
@@ -89,8 +89,8 @@ string CardUIOutput::render(Card& card)
 std::string CardUIOutput::sliceCard(const std::string& card)
 {
     string result;
-    int cardHeight = card.size() / CARD_WIDTH;
-    for (int i = 0; i < cardHeight; i++) {
+    size_t cardHeight = card.size() / CARD_WIDTH;
+    for (size_t i = 0; i < cardHeight; i++) {
 		result += card.substr(i * CARD_WIDTH, CARD_WIDTH) + '\n';
 	}
     return result;

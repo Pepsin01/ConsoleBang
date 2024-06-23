@@ -6,6 +6,6 @@ constexpr int MUSTANG_CARD_COUNT = 2;
 class MustangCard : public BlueCard
 {
 public:
-	MustangCard(GameStateControllor& gameState, CardColor color);
+	MustangCard(GameStateController& gameState, CardColor color);
 };
 
