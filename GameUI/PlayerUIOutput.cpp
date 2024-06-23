@@ -71,7 +71,7 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 			tallestCard = static_cast<int>(cardStrings[i].size());
 		}
 	}
-	tallestCard /= CARD_WIDTH; // Divide by the width to get number lines in a card
+	tallestCard /= CardUIOutput::CARD_WIDTH; // Divide by the width to get number lines in a card
 
 	string result; // The final result
 	int cardsRendered = 0; // Number of cards rendered so far
@@ -80,27 +80,27 @@ string PlayerUIOutput::renderCardVector(vector<unique_ptr<Card>>& cards)
 	while (cardsRendered < static_cast<int>(cards.size()))
 	{
 		// Render the slot numbers for each card
-		for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
+		for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < GameUIOutput::SCREEN_WIDTH / CardUIOutput::CARD_WIDTH) ? cardStrings.size() : GameUIOutput::SCREEN_WIDTH / CardUIOutput::CARD_WIDTH); j++)
 		{
-			result += to_string(j) + string(CARD_WIDTH - to_string(j).size(), ' ');
+			result += to_string(j) + string(CardUIOutput::CARD_WIDTH - to_string(j).size(), ' ');
 		}
 		result += '\n';
 		// Render the cards line by line
 		for (int i = 0; i < tallestCard; i++)
 		{
 			// Render each line of each card
-			for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < SCREEN_WIDTH / CARD_WIDTH) ? cardStrings.size() : SCREEN_WIDTH / CARD_WIDTH); j++)
+			for (size_t j = cardsRendered; j < ((cardStrings.size() - cardsRendered < GameUIOutput::SCREEN_WIDTH / CardUIOutput::CARD_WIDTH) ? cardStrings.size() : GameUIOutput::SCREEN_WIDTH / CardUIOutput::CARD_WIDTH); j++)
 			{
 				// If the card is shorter than the current line, fill with spaces
-				if (static_cast<int>(cardStrings[j].size()) <= i * CARD_WIDTH)
-					result += string(CARD_WIDTH, ' ');
+				if (static_cast<int>(cardStrings[j].size()) <= i * CardUIOutput::CARD_WIDTH)
+					result += string(CardUIOutput::CARD_WIDTH, ' ');
 				else
-					result += cardStrings[j].substr(i * CARD_WIDTH, CARD_WIDTH);
+					result += cardStrings[j].substr(i * CardUIOutput::CARD_WIDTH, CardUIOutput::CARD_WIDTH);
 			}
 			result += '\n';
 		}
 		result += '\n';
-		cardsRendered += SCREEN_WIDTH / CARD_WIDTH; // Move to the next row of cards
+		cardsRendered += GameUIOutput::SCREEN_WIDTH / CardUIOutput::CARD_WIDTH; // Move to the next row of cards
 	}
 
 	return result;

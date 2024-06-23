@@ -40,13 +40,11 @@ int CardUIInput::selectCastTarget(GameStateController& gameState, Card& card)
 			if (ss >> playerIndex && playerIndex >= 0 && playerIndex < static_cast<int>(gameState.playerCount())) { // Check if the player index is valid
 				return playerIndex;
 			}
-			else {
-				GameUIOutput::renderScreen(
-					"Invalid command format for CAST.\n\n"
-					"Press ENTER to continue.\n"
-				);
-				GameUIInput::waitForEnter();
-			}
+			GameUIOutput::renderScreen(
+				"Invalid command format for CAST.\n\n"
+				"Press ENTER to continue.\n"
+			);
+			GameUIInput::waitForEnter();
 		}
 		else if (command == "RETURN") {
 			return -1; // Return -1 to signal that the card should not be casted
@@ -59,7 +57,6 @@ int CardUIInput::selectCastTarget(GameStateController& gameState, Card& card)
 			GameUIInput::waitForEnter();
 		}
 	}
-	return playerIndex;
 }
 
 int CardUIInput::selectEquipmentCard(Player& player)
@@ -89,13 +86,11 @@ int CardUIInput::selectEquipmentCard(Player& player)
 			if (ss >> cardIndex && cardIndex >= 0 && cardIndex < player.getEquipmentSize()) { // Check if the card index is valid
 				return cardIndex;
 			}
-			else {
-				GameUIOutput::renderScreen(
-					"Invalid command format for SELECT.\n\n"
-					"Press ENTER to continue.\n"
-				);
-				GameUIInput::waitForEnter();
-			}
+			GameUIOutput::renderScreen(
+				"Invalid command format for SELECT.\n\n"
+				"Press ENTER to continue.\n"
+			);
+			GameUIInput::waitForEnter();
 		}
 		else if (command == "RETURN") {
 			return -1;
@@ -108,7 +103,6 @@ int CardUIInput::selectEquipmentCard(Player& player)
 			GameUIInput::waitForEnter();
 		}
 	}
-	return cardIndex;
 }
 
 bool CardUIInput::fromHandOrEquipment()
@@ -133,15 +127,13 @@ bool CardUIInput::fromHandOrEquipment()
 		if (command == "HAND") {
 			return true;
 		}
-		else if (command == "EQUIPMENT") {
+		if (command == "EQUIPMENT") {
 			return false;
 		}
-		else {
-			GameUIOutput::renderScreen(
-				"Invalid command.\n\n"
-				"Press ENTER to continue.\n"
-			);
-			GameUIInput::waitForEnter();
-		}
+		GameUIOutput::renderScreen(
+			"Invalid command.\n\n"
+			"Press ENTER to continue.\n"
+		);
+		GameUIInput::waitForEnter();
 	}
 }

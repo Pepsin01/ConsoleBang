@@ -76,7 +76,7 @@ int Player::getHandSize() const
 
 int Player::getEquipmentSize() const
 {
-	return equipment.size();
+	return static_cast<int>(equipment.size());
 }
 
 GameStateController& Player::getGameState() const
@@ -365,7 +365,7 @@ bool Player::defendBangEffect()
 			}
 		}
 	}
-	for (size_t i = 0; i < hand.size(); i++)
+	for (int i = 0; i < static_cast<int>(hand.size()); i++)
 	{
 		// if the player has a mancato card it is used to defend
 		if (typeid(*hand[i]) == typeid(MancatoCard))
@@ -379,7 +379,7 @@ bool Player::defendBangEffect()
 
 bool Player::returnFire()
 {
-	for (size_t i = 0; i < hand.size(); i++)
+	for (int i = 0; i < static_cast<int>(hand.size()); i++)
 	{
 		// if the player has a bang card it is used to return fire
 		if (typeid(*hand[i]) == typeid(BangCard))

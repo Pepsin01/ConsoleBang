@@ -7,7 +7,7 @@ SaloonCard::SaloonCard(GameStateController& gameState, CardColor color) :
 
 bool SaloonCard::execute(Player& player)
 {
-	for (size_t i = 0; i < gameState.playerCount(); i++)
+	for (int i = 0; i < static_cast<int>(gameState.playerCount()); i++)
 	{
 		gameState.getPlayer(i)->changeHealth(1);
 	}

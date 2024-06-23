@@ -8,7 +8,7 @@ EmporioCard::EmporioCard(GameStateController& gameState, CardColor color) :
 
 bool EmporioCard::execute(Player & player)
 {
-	for (size_t i = 0; i < gameState.playerCount(); i++)
+	for (int i = 0; i < static_cast<int>(gameState.playerCount()); i++)
 	{
 		unique_ptr<Card> card = gameState.drawCard();
 		if (card)

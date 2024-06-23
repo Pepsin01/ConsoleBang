@@ -32,13 +32,13 @@ protected:
 
 	Card(
 		GameStateController& gameState,
-		const std::string name,
-		const std::string description,
+		const std::string& name,
+		const std::string& description,
 		CardColor color
 	) : gameState(gameState), name(name), description(description), color(color) {}
 public:
-	const std::string name;
-	const std::string description;
+	const std::string& name;
+	const std::string& description;
 	const CardColor color;
 
 	virtual ~Card() = default;
@@ -52,8 +52,8 @@ class PlayableCard : public Card {
 protected:
 	PlayableCard(
 		GameStateController& gameState,
-		const std::string name,
-		const std::string description,
+		const std::string& name,
+		const std::string& description,
 		CardColor color
 	) : Card(gameState, name, description, color) {}
 public:
@@ -69,8 +69,8 @@ class ReactionCard : public Card {
 protected:
 	ReactionCard(
 		GameStateController& gameState,
-		const std::string name,
-		const std::string description,
+		const std::string& name,
+		const std::string& description,
 		CardColor color
 	) : Card(gameState, name, description, color) {}
 public:
@@ -84,8 +84,8 @@ class BlueCard : public Card {
 protected:
 	BlueCard(
 		GameStateController& gameState,
-		const std::string name,
-		const std::string description, 
+		const std::string& name,
+		const std::string& description, 
 		CardColor color
 	) : Card(gameState, name, description, color) {}
 public:
@@ -99,8 +99,8 @@ class DebuffCard : public BlueCard {
 protected:
 	DebuffCard(
 		GameStateController& gameState,
-		const std::string name,
-		const std::string description,
+		const std::string& name,
+		const std::string& description,
 		CardColor color
 	) : BlueCard(gameState, name, description, color) {}
 public:
@@ -114,8 +114,8 @@ class WeaponCard : public BlueCard {
 protected:
 	WeaponCard(
 		GameStateController& gameState,
-		const std::string name,
-		const std::string description,
+		const std::string& name,
+		const std::string& description,
 		CardColor color,
 		int range
 	) : BlueCard(gameState, name, description, color), range(range) {}

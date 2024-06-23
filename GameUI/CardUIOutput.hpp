@@ -7,7 +7,6 @@
 #include "GameUIOutput.hpp"
 #include "GameUIInput.hpp"
 
-constexpr int CARD_WIDTH = 30; // width of the card in characters
 
 /*
 * @brief Class that handles the output for the card UI
@@ -17,6 +16,8 @@ class CardUIOutput
 private:
 	static std::vector<std::string> divideIntoLines(const std::string& text, int lineLength);
 public:
+	static constexpr int CARD_WIDTH = 30; // width of the card in characters
+
 	/*
 	* @brief Renders the card visual representation for console output.
 	* @param card Card to render
